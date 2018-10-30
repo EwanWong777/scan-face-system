@@ -34,5 +34,6 @@ export default {
     display flex
 .m-layout-body-left
     width 240px;
-    background-color $grey900
+.m-layout-body-right
+    flex 1
 </style>

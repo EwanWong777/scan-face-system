@@ -5,11 +5,11 @@
                 <img src="@/assets/logo-white.svg" alt="">
             </div>
             <div class="m-title">
-                DEMO-ADMIN
+                后台管理系统模板
             </div>
         </div>
         <div class="m-topbar-right">
-            
+
         </div>
     </div>
 </template>
@@ -20,18 +20,21 @@ export default {};
 @import '../../../style/variables.styl'
 .m-topbar
     height 60px
-    background-color $deepPurple500
+    background-color $base500
     display flex
 .m-topbar-left
     display flex
 .m-logo
-    height 30px
-    padding 15px
+    height 20px
+    padding 20px
+    border-right 1px solid $white
     img
         height 100%
 .m-title
-    color #fff
+    color $white
     line-height 60px
+    padding 0 20px;
     font-weight bold
-    font-size 20px
+    font-size 18px
+    border-right 1px solid $white
 </style>

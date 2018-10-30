@@ -8,8 +8,8 @@
 export default {};
 </script>
 
-<style>
-#app {
-  height: 100%;
-}
+<style lang="stylus" scoped>
+#app
+  height 100%
+  min-width 1280px
 </style>
