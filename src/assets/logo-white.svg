@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="385px" viewBox="0 0 800 385" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-100.000000, -308.000000)" fill="#FFF">
+            <g id="icon" transform="translate(100.000000, 308.000000)">
+                <polygon id="Combined-Shape" points="444.444444 0 622.222222 307.920144 577.777778 384.900179 355.555556 0"></polygon>
+                <polygon id="Combined-Shape" points="622.222222 0 711.111111 153.960072 666.666667 230.940108 533.333333 0"></polygon>
+                <polygon id="Polygon" transform="translate(755.555556, 38.490018) scale(1, -1) translate(-755.555556, -38.490018) " points="755.555556 0 800 76.9800359 711.111111 76.9800359"></polygon>
+                <polygon id="Combined-Shape" points="88.8888889 0 266.666667 307.920144 222.222222 384.900179 0 0"></polygon>
+                <polygon id="Combined-Shape" points="266.666667 0 355.555556 153.960072 311.111111 230.940108 177.777778 0"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
