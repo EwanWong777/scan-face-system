@@ -1,13 +1,13 @@
 <template>
     <div class="m-layout">
-        <div class="m-layout-header">
-            <Topbar></Topbar>
+        <div class="m-layout-left">
+            <Sidebar></Sidebar>
         </div>
-        <div class="m-layout-body">
-            <div class="m-layout-body-left">
-                <Menu></Menu>
+        <div class="m-layout-right">
+            <div class="m-layout-right-header">
+                <Topbar></Topbar>
             </div>
-            <div class="m-layout-body-right">
+            <div class="m-layout-right-body">
                 <router-view></router-view>
             </div>
         </div>
@@ -15,12 +15,12 @@
 </template>
 <script>
 import Topbar from "./components/Topbar";
-import Menu from "./components/Menu";
+import Sidebar from "./components/Sidebar";
 export default {
-  components: {
-    Topbar,
-    Menu
-  }
+    components: {
+        Topbar,
+        Sidebar
+    }
 };
 </script>
 <style lang="stylus" scoped>
@@ -28,12 +28,16 @@ export default {
 .m-layout
     height 100%
     display flex
-    flex-direction column
-.m-layout-body
+.m-layout-left
+    z-index 100
+.m-layout-right
     flex 1
     display flex
-.m-layout-body-left
-    width 240px;
-.m-layout-body-right
+    flex-direction column
+    z-index 99
+.m-layout-right-header
+    z-index 100
+.m-layout-right-body
     flex 1
+    z-index 99
 </style>
