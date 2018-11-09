@@ -10,55 +10,23 @@
                 </div>
             </div>
         </div>
-        <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="sidebarCollapse">
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span>导航一</span>
-                </template>
-                <el-menu-item-group>
-                    <template slot="title">分组一</template>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-            </el-menu-item>
-        </el-menu>
-        <ul class="m-menu">
-            <li v-for="(item) in menu" :key="item.id">
-                <div class="m-menu-first">
-                    <router-link :to="item.link">
-                        <div class="m-menu-link-icon" v-html="item.icon"></div>
-                        <div class="m-menu-link-text">
-                            {{item.title}}
-                        </div>
-                    </router-link>
-                </div>
-                <div class="m-menu-second">
-                    <router-link :to="item.children.link">
-                        <div class="m-menu-link-text">
-                            {{item.children.title}}
-                        </div>
-                    </router-link>
-                </div>
+        <ul class="m-menu-first">
+            <li v-for="(firstmenu,index) in menu" :key="index" @click="handleToggleSubmenu(firstmenu)">
+                <router-link :to="firstmenu.link">
+                    <div class="m-menu-first-icon" v-html="firstmenu.icon"></div>
+                    <div class="m-menu-first-text">
+                        {{firstmenu.title}}
+                    </div>
+                </router-link>
+                <ul class="m-menu-second" v-show="sidebarCollapse || firstmenu.showChildren" v-if="firstmenu.children">
+                    <li v-for="(secondmenu,index) in firstmenu.children" :key="index">
+                        <router-link :to="secondmenu.link">
+                            <div class="m-menu-second-text">
+                                {{secondmenu.title}}
+                            </div>
+                        </router-link>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -70,40 +38,58 @@ export default {
         return {
             menu: [
                 {
-                    id: 1,
-                    link: "/home",
-                    title: "主页",
+                    title: "菜单一",
+                    link: "",
                     icon: '<i class="fas fa-home"></i>',
+                    showChildren: true,
                     children: [
                         {
                             id: 1 - 1,
                             title: "菜单一一",
+                            link: "/home"
+                        },
+                        {
+                            id: 1 - 1,
+                            title: "菜单一二",
                             link: "/home"
                         }
                     ]
                 },
                 {
-                    id: 2,
+                    title: "菜单二",
                     link: "",
-                    title: "菜单一",
                     icon: '<i class="fas fa-lock"></i>',
+                    showChildren: false,
                     children: [
                         {
-                            id: 1 - 1,
-                            title: "菜单一一",
+                            title: "菜单二一",
+                            link: "/home"
+                        },
+                        {
+                            title: "菜单二二",
                             link: "/home"
                         }
                     ]
+                },
+                {
+                    title: "菜单三",
+                    link: "/user",
+                    icon: '<i class="fas fa-lock"></i>',
+                    showChildren: false
                 }
             ]
         };
     },
     computed: {
         ...mapGetters(["sidebarCollapse"])
+    },
+    methods: {
+        handleToggleSubmenu: function(item) {
+            item.showChildren = !item.showChildren;
+        }
     }
 };
 </script>
-
 <style lang="stylus" scoped>
 @import '../../../style/variables.styl'
 .m-sidebar
@@ -166,17 +152,58 @@ export default {
         height 0
         transition all 0.5s
 // 菜单
-.m-menu-first>a
+.m-menu-first>li
+    position relative
+.m-menu-first>li>a
     display block
     color $white0
     line-height 60px
     display flex
-.m-menu-link-icon
+    &:hover
+        background-color $white2
+.m-menu-first-icon
+    width 20px
+    text-align center
     margin-left 20px
-.m-menu-link-text
+.m-menu-first-text
     margin-left 10px
     white-space nowrap
     overflow hidden
     flex 1
+.m-menu-second>li>a
+    display block
+    color $white0
+    line-height 60px
+    &:hover
+        background-color $white2
+.m-menu-second-text
+    margin-left 50px
+    white-space nowrap
+    overflow hidden
+    flex 1
+.m-sidebar-open
+    .m-menu-first-text
+        opacity 1
+    .m-menu-second-text
+        margin-left 50px
+.m-sidebar-close
+    .m-menu-first>li
+        &:hover .m-menu-second
+            display block
+    .m-menu-first>li>a
+        border-bottom 1px solid $black1
+    .m-menu-first-text
+        opacity 0
+    .m-menu-second
+        position absolute
+        left 65px
+        top 0
+        background-color #fff
+        padding 0 20px
+        display none
+    .m-menu-second>li>a
+        color #333
+    .m-menu-second-text
+        margin-left 0
 </style>
 
