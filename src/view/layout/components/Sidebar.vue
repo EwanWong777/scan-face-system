@@ -11,20 +11,27 @@
             </div>
         </div>
         <ul class="m-menu-first">
-            <li v-for="(firstmenu,index) in menu" :key="index" @click="handleToggleSubmenu(firstmenu)">
-                <router-link :to="firstmenu.link">
-                    <div class="m-menu-first-icon" v-html="firstmenu.icon"></div>
-                    <div class="m-menu-first-text">
-                        {{firstmenu.title}}
-                    </div>
-                </router-link>
+            <li v-for="(firstmenu,index) in menu" :key="index">
+                <div class="m-menu-first-link" @click="handleToggleSubmenu(firstmenu)">
+                    <router-link :to="firstmenu.link">
+                        <div class="m-menu-first-icon" v-html="firstmenu.icon"></div>
+                        <div class="m-menu-first-text" v-show="!sidebarCollapse">
+                            {{firstmenu.title}}
+                        </div>
+                        <div class="m-menu-first-arrow" v-if="firstmenu.children" v-show="!sidebarCollapse">
+                            <i class="el-icon-arrow-down"></i>
+                        </div>
+                    </router-link>
+                </div>
                 <ul class="m-menu-second" v-show="sidebarCollapse || firstmenu.showChildren" v-if="firstmenu.children">
                     <li v-for="(secondmenu,index) in firstmenu.children" :key="index">
-                        <router-link :to="secondmenu.link">
-                            <div class="m-menu-second-text">
-                                {{secondmenu.title}}
-                            </div>
-                        </router-link>
+                        <div class="m-menu-second-link">
+                            <router-link :to="secondmenu.link">
+                                <div class="m-menu-second-text">
+                                    {{secondmenu.title}}
+                                </div>
+                            </router-link>
+                        </div>
                     </li>
                 </ul>
             </li>
@@ -44,12 +51,10 @@ export default {
                     showChildren: true,
                     children: [
                         {
-                            id: 1 - 1,
                             title: "菜单一一",
                             link: "/home"
                         },
                         {
-                            id: 1 - 1,
                             title: "菜单一二",
                             link: "/home"
                         }
@@ -73,8 +78,8 @@ export default {
                 },
                 {
                     title: "菜单三",
-                    link: "/user",
-                    icon: '<i class="fas fa-lock"></i>',
+                    link: "/home",
+                    icon: '<i class="fas fa-user"></i>',
                     showChildren: false
                 }
             ]
@@ -154,13 +159,15 @@ export default {
 // 菜单
 .m-menu-first>li
     position relative
-.m-menu-first>li>a
+.m-menu-first-link>a
     display block
     color $white0
     line-height 60px
     display flex
     &:hover
         background-color $white2
+.m-menu-first-link>.router-link-active
+    background-color $white2
 .m-menu-first-icon
     width 20px
     text-align center
@@ -170,7 +177,9 @@ export default {
     white-space nowrap
     overflow hidden
     flex 1
-.m-menu-second>li>a
+.m-menu-first-arrow
+    margin-right 20px
+.m-menu-second-link>a
     display block
     color $white0
     line-height 60px
@@ -184,24 +193,28 @@ export default {
 .m-sidebar-open
     .m-menu-first-text
         opacity 1
+    .m-menu-first-arrow
+        opacity 1
     .m-menu-second-text
         margin-left 50px
 .m-sidebar-close
     .m-menu-first>li
         &:hover .m-menu-second
             display block
-    .m-menu-first>li>a
+    .m-menu-first-link>a
         border-bottom 1px solid $black1
     .m-menu-first-text
         opacity 0
+    .m-menu-first-arrow
+        opacity 0
     .m-menu-second
         position absolute
-        left 65px
+        left 80px
         top 0
         background-color #fff
         padding 0 20px
         display none
-    .m-menu-second>li>a
+    .m-menu-second-link>a
         color #333
     .m-menu-second-text
         margin-left 0
