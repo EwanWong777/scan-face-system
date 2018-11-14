@@ -1,5 +1,102 @@
 <template>
     <div class="m-login">
-        login
+        <div class="m-login-bg"></div>
+        <div class="m-login-container">
+            <div class="m-login-panel">
+                <div class="m-login-logo">
+                    <img src="@/assets/logo-black.svg" alt="">
+                </div>
+                <div class="m-login-title">
+                    后台管理系统模板
+                </div>
+                <el-form>
+                    <el-form-item>
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z][a-zA-Z0-9_.@~!?]{4,16}$/ }" data-vv-as="用户名" v-model="loginForm.username" name="username" placeholder="请输入用户名/手机号" auto-complete="on" class="m-login-input">
+                        </el-input>
+                        <div v-show="errorBags.has('username')">{{ errorBags.first('username') }}</div>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }" data-vv-as="密码" v-model="loginForm.password" name="password" placeholder="请输入密码" auto-complete="on" class="m-login-input" @keyup.enter.native="handleLoginByUserName">
+                        </el-input>
+                        <div v-show="errorBags.has('password')">{{ errorBags.first('password') }}</div>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" class="m-login-btn" @click="handleLoginByUserName">登录</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </div>
     </div>
 </template>
+<script>
+import { mapActions } from "vuex";
+export default {
+    data() {
+        return {
+            loginForm: {
+                username: "",
+                password: ""
+            }
+        };
+    },
+    methods: {
+        ...mapActions(["loginByUserName"]),
+        handleLoginByUserName: function() {
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    this.loginByUserName(this.loginForm)
+                        .then(() => {
+                            this.$router.push({ path: this.redirect || "/" });
+                        })
+                        .catch(() => {
+                            this.$message.error("用户名或密码错误");
+                        });
+                } else {
+                    this.$message.error("用户名或密码错误");
+                }
+            });
+        }
+    }
+};
+</script>
+<style lang="stylus" scoped>
+@import '../../style/variables.styl'
+.m-login
+    height 100%
+    position relative
+.m-login-bg
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    background #aa4b6b
+    background -webkit-linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+    background linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+.m-login-container
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    display flex
+    justify-content center
+    align-items center
+.m-login-panel
+    width 500px
+    background-color $white0
+    padding 60px
+    border-radius 10px
+.m-login-logo
+    text-align center
+    margin-bottom 20px
+    img
+        width 150px
+.m-login-title
+    text-align center
+    font-size 24px
+    font-weight bold
+    margin-bottom 40px
+.m-login-btn
+    width 100%
+</style>

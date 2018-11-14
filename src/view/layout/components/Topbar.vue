@@ -35,18 +35,17 @@ export default {
 <style lang="stylus" scoped>
 @import '../../../style/variables.styl'
 .m-topbar
-    height 60px
+    height 50px
     background-color $white0
     display flex
     border-bottom 1px solid $black1
 .m-topbar-left
     display flex
 .m-toggle-btn
-    width 60px
+    width 50px
     text-align center
-    line-height 60px
+    line-height 50px
     border-right 1px solid $black1
-    font-size 18px
     cursor pointer
 .m-topbar-right
     flex 1
@@ -57,7 +56,7 @@ export default {
     cursor pointer
 .m-language-link
     padding 0 20px
-    line-height 60px
+    line-height 50px
     display flex
 .m-language-link-arrow
     margin-left 10px

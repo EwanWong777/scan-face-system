@@ -1,5 +1,5 @@
 <template>
-    <div class="m-sidebar" :class="sidebarCollapse?'m-sidebar-close':'m-sidebar-open'">
+    <div class="m-sidebar" :class="isCollapse?'m-sidebar-close':'m-sidebar-open'">
         <div class="m-logo">
             <div class="m-logo-container">
                 <div class="m-logo-img">
@@ -15,15 +15,15 @@
                 <div class="m-menu-first-link" @click="handleToggleSubmenu(firstmenu)">
                     <router-link :to="firstmenu.link">
                         <div class="m-menu-first-icon" v-html="firstmenu.icon"></div>
-                        <div class="m-menu-first-text" v-show="!sidebarCollapse">
+                        <div class="m-menu-first-text" v-show="!isCollapse">
                             {{firstmenu.title}}
                         </div>
-                        <div class="m-menu-first-arrow" v-if="firstmenu.children" v-show="!sidebarCollapse">
+                        <div class="m-menu-first-arrow" v-if="firstmenu.children" v-show="!isCollapse">
                             <i class="el-icon-arrow-down"></i>
                         </div>
                     </router-link>
                 </div>
-                <ul class="m-menu-second" v-show="sidebarCollapse || firstmenu.showChildren" v-if="firstmenu.children">
+                <ul class="m-menu-second" v-show="isCollapse || firstmenu.showChildren" v-if="firstmenu.children">
                     <li v-for="(secondmenu,index) in firstmenu.children" :key="index">
                         <div class="m-menu-second-link">
                             <router-link :to="secondmenu.link">
@@ -46,7 +46,7 @@ export default {
             menu: [
                 {
                     title: "菜单一",
-                    link: "",
+                    link: "$route.path",
                     icon: '<i class="fas fa-home"></i>',
                     showChildren: true,
                     children: [
@@ -86,7 +86,7 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["sidebarCollapse"])
+        ...mapGetters(["isCollapse"])
     },
     methods: {
         handleToggleSubmenu: function(item) {
@@ -98,8 +98,7 @@ export default {
 <style lang="stylus" scoped>
 @import '../../../style/variables.styl'
 .m-sidebar
-    height 100%
-    border-right 1px solid $black1
+    // height 100%
 .m-logo
     display flex
     justify-content center
@@ -121,10 +120,10 @@ export default {
     overflow hidden
 // 展开
 .m-sidebar-open
-    width 300px
+    width 250px
     transition all 0.5s
     .m-logo
-        height 180px
+        height 200px
         transition all 0.5s
     .m-logo-img
         padding 0 40px
@@ -139,18 +138,17 @@ export default {
         transition all 0.5s
 // 折叠
 .m-sidebar-close
-    width 60px
+    width 50px
     transition all 0.5s
     .m-logo
-        height 60px
-        border-bottom 1px solid $black1
+        height 50px
         transition all 0.5s
     .m-logo-img
         padding 0
         transition all 0.5s
     .m-logo-container
-        max-width 40px
-        max-height 40px
+        max-width 30px
+        max-height 30px
         transition all 0.5s
     .m-logo-text
         margin-top 0
@@ -162,7 +160,7 @@ export default {
 .m-menu-first-link>a
     display block
     color $white0
-    line-height 60px
+    line-height 50px
     display flex
     &:hover
         background-color $white2
@@ -182,7 +180,7 @@ export default {
 .m-menu-second-link>a
     display block
     color $white0
-    line-height 60px
+    line-height 50px
     &:hover
         background-color $white2
 .m-menu-second-text
@@ -201,8 +199,6 @@ export default {
     .m-menu-first>li
         &:hover .m-menu-second
             display block
-    .m-menu-first-link>a
-        border-bottom 1px solid $black1
     .m-menu-first-text
         opacity 0
     .m-menu-first-arrow

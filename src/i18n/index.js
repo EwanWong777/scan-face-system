@@ -4,21 +4,26 @@ import Cookie from 'js-cookie'
 
 import zh_CN from './lang/zh-CN'
 import en from './lang/en'
+import element_en from 'element-ui/lib/locale/lang/en'
+import element_zh_CN from 'element-ui/lib/locale/lang/zh-CN'
 
 Vue.use(VueI18n)
 
 const messages = {
     en: {
-        ...en
+        ...en,
+        ...element_en
     },
     zh_CN: {
-        ...zh_CN
+        ...zh_CN,
+        ...element_zh_CN
     }
 }
 
 const i18n = new VueI18n({
     locale: Cookie.get('language') || 'en',
-    messages
+    messages,
+    silentTranslationWarn: true
 })
 
 export default i18n

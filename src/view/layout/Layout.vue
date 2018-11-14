@@ -1,14 +1,21 @@
 <template>
     <div class="m-layout">
-        <div class="m-layout-left">
-            <Sidebar></Sidebar>
-        </div>
-        <div class="m-layout-right">
-            <div class="m-layout-right-header">
-                <Topbar></Topbar>
+        <div class="m-layout-bg"></div>
+        <div class="m-layout-container">
+            <div class="m-layout-left">
+                <vue-scroll>
+                    <Sidebar></Sidebar>
+                </vue-scroll>
             </div>
-            <div class="m-layout-right-body">
-                <router-view></router-view>
+            <div class="m-layout-right">
+                <div class="m-layout-right-header">
+                    <Topbar></Topbar>
+                </div>
+                <div class="m-layout-right-body">
+                    <vue-scroll>
+                        <router-view></router-view>
+                    </vue-scroll>
+                </div>
             </div>
         </div>
     </div>
@@ -27,6 +34,22 @@ export default {
 @import '../../style/variables.styl'
 .m-layout
     height 100%
+    position relative
+.m-layout-bg
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+    background #aa4b6b
+    background -webkit-linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+    background linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+.m-layout-container
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
     display flex
 .m-layout-left
     z-index 100
@@ -40,4 +63,6 @@ export default {
 .m-layout-right-body
     flex 1
     z-index 99
+    background-color $white7
+    overflow auto
 </style>

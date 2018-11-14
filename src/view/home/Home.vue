@@ -1,12 +1,7 @@
 <template>
     <div class="m-home">
-        <div class="m-home-container">
-            <div class="m-box">
-                home
-            </div>
-            <div class="m-box">
-                home
-            </div>
+        <div class="m-box">
+            home
         </div>
     </div>
 </template>
@@ -16,12 +11,9 @@ export default {};
 <style lang="stylus" scoped>
 @import '../../style/variables.styl'
 .m-home
-    height 100%
-    background-color $white7
-.m-home-container
     padding 20px
 .m-box
     background-color $white0
+    height 1400px
     padding 20px
-    margin-bottom 20px
 </style>

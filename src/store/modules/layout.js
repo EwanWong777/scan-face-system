@@ -1,12 +1,12 @@
 const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
 
-const app = {
+const layout = {
     state: {
-        sidebarCollapse: false
+        isCollapse: false
     },
     mutations: {
         [TOGGLE_SIDEBAR](state) {
-            state.sidebarCollapse = !state.sidebarCollapse
+            state.isCollapse = !state.isCollapse
         }
     },
     actions: {
@@ -18,4 +18,4 @@ const app = {
     }
 }
 
-export default app
+export default layout
