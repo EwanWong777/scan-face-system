@@ -3,7 +3,9 @@ import App from './App.vue'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
+Vue.use(ElementUI, {
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 import vuescroll from 'vuescroll'
 import 'vuescroll/dist/vuescroll.css';
@@ -17,6 +19,7 @@ Vue.use(vuescroll, {
 })
 
 import VeeValidate from 'vee-validate'
+import VeeValidate_en from 'vee-validate/dist/locale/en'
 import VeeValidate_zh_CN from 'vee-validate/dist/locale/zh_CN'
 const config = {
   errorBagName: 'errorBags',
@@ -24,6 +27,9 @@ const config = {
   i18nRootKey: 'validations',
   i18n,
   dictionary: {
+    en: {
+      ...VeeValidate_en,
+    },
     zh_CN: {
       ...VeeValidate_zh_CN,
     }

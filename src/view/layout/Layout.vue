@@ -32,6 +32,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../style/variables.styl'
+// 布局
 .m-layout
     height 100%
     position relative
@@ -41,9 +42,8 @@ export default {
     top 0
     width 100%
     height 100%
-    background #aa4b6b
-    background -webkit-linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
-    background linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+    background -webkit-linear-gradient(to bottom, $base3, $base7)
+    background linear-gradient(to bottom, $base3, $base7)
 .m-layout-container
     position absolute
     left 0

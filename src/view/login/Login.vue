@@ -11,12 +11,12 @@
                 </div>
                 <el-form>
                     <el-form-item>
-                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z][a-zA-Z0-9_.@~!?]{4,16}$/ }" data-vv-as="用户名" v-model="loginForm.username" name="username" placeholder="请输入用户名/手机号" auto-complete="on" class="m-login-input">
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z][a-zA-Z0-9_.@~!?]{4,16}$/ }" :data-vv-as="$t('login.username')" v-model="loginForm.username" name="username" placeholder="请输入用户名/手机号" auto-complete="on" class="m-login-input">
                         </el-input>
                         <div v-show="errorBags.has('username')">{{ errorBags.first('username') }}</div>
                     </el-form-item>
                     <el-form-item>
-                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }" data-vv-as="密码" v-model="loginForm.password" name="password" placeholder="请输入密码" auto-complete="on" class="m-login-input" @keyup.enter.native="handleLoginByUserName">
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }" :data-vv-as="$t('login.password')" v-model="loginForm.password" name="password" placeholder="请输入密码" auto-complete="on" class="m-login-input" @keyup.enter.native="handleLoginByUserName">
                         </el-input>
                         <div v-show="errorBags.has('password')">{{ errorBags.first('password') }}</div>
                     </el-form-item>
@@ -70,9 +70,8 @@ export default {
     left 0
     width 100%
     height 100%
-    background #aa4b6b
-    background -webkit-linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
-    background linear-gradient(to left, #3b8d99, #6b6b83, #aa4b6b)
+    background -webkit-linear-gradient(to bottom, $base3, $base7)
+    background linear-gradient(to bottom, $base3, $base7)
 .m-login-container
     position absolute
     top 0
@@ -99,4 +98,6 @@ export default {
     margin-bottom 40px
 .m-login-btn
     width 100%
+    border-color $base5
+    background-color $base5
 </style>

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 
-import zh_CN from './lang/zh-CN'
 import en from './lang/en'
+import zh_CN from './lang/zh-CN'
 import element_en from 'element-ui/lib/locale/lang/en'
 import element_zh_CN from 'element-ui/lib/locale/lang/zh-CN'
 
@@ -21,7 +21,7 @@ const messages = {
 }
 
 const i18n = new VueI18n({
-    locale: Cookie.get('language') || 'en',
+    locale: Cookies.get('language') || 'en',
     messages,
     silentTranslationWarn: true
 })

@@ -6,7 +6,7 @@
                     <img src="@/assets/logo-white.svg" alt="">
                 </div>
                 <div class="m-logo-text">
-                    后台管理系统模板
+                    {{$t('common.title')}}
                 </div>
             </div>
         </div>
@@ -97,8 +97,6 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../../style/variables.styl'
-.m-sidebar
-    // height 100%
 .m-logo
     display flex
     justify-content center
@@ -121,39 +119,39 @@ export default {
 // 展开
 .m-sidebar-open
     width 250px
-    transition all 0.5s
+    transition all 0.3s
     .m-logo
         height 200px
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-img
         padding 0 40px
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-container
         max-width 180px
         max-height 180px
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-text
         margin-top 20px
         height 20px
-        transition all 0.5s
+        transition all 0.3s
 // 折叠
 .m-sidebar-close
     width 50px
-    transition all 0.5s
+    transition all 0.3s
     .m-logo
         height 50px
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-img
         padding 0
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-container
         max-width 30px
         max-height 30px
-        transition all 0.5s
+        transition all 0.3s
     .m-logo-text
         margin-top 0
         height 0
-        transition all 0.5s
+        transition all 0.3s
 // 菜单
 .m-menu-first>li
     position relative
