@@ -27,10 +27,10 @@
             <div class="m-user">
                 <div class="m-user-link">
                     <div class="m-user-link-img">
-                        <img src="@/assets/body-bg.jpg" alt="">
+                        <img :src="this.avatar" alt="">
                     </div>
                     <div class="m-user-link-text">
-                        RICHAR WANG
+                        {{this.name}}
                     </div>
                     <div class="m-user-link-arrow">
                         <i class="el-icon-arrow-down"></i>
@@ -39,8 +39,7 @@
                 <div class="m-user-panel-box">
                     <div class="m-user-panel">
                         <ul class="m-user-list">
-                            <li>个人中心</li>
-                            <li>退出系統</li>
+                            <li @click="handleLogout">退出系統</li>
                         </ul>
                     </div>
                 </div>
@@ -52,13 +51,18 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
     computed: {
-        ...mapGetters(["language"])
+        ...mapGetters(["language", "name", "avatar"])
     },
     methods: {
-        ...mapActions(["setLanguage", "toggleSidebar"]),
+        ...mapActions(["toggleSidebar", "setLanguage", "logout"]),
         handleSetLanguage: function(language) {
             this.setLanguage(language);
             this.$i18n.locale = language;
+        },
+        handleLogout: function() {
+            this.logout().then(() => {
+                location.reload();
+            });
         }
     }
 };
@@ -70,7 +74,7 @@ export default {
     height 50px
     background-color $white0
     display flex
-    border-bottom 1px solid $black1
+    border-bottom 1px solid $border0
 .m-topbar-left
     display flex
 .m-topbar-right
@@ -82,12 +86,12 @@ export default {
     width 50px
     text-align center
     line-height 50px
-    border-right 1px solid $black1
+    border-right 1px solid $border0
     cursor pointer
 // 语言
 .m-language
     position relative
-    border-left 1px solid $black1
+    border-left 1px solid $border0
     cursor pointer
     &:hover .m-language-panel
         max-height 1000px
@@ -118,13 +122,14 @@ export default {
     li
         padding 20px
         text-align center
+        white-space nowrap
         &:hover
             color $white0
             background-color $base6
 // 用户
 .m-user
     position relative
-    border-left 1px solid $black1
+    border-left 1px solid $border0
     cursor pointer
     &:hover .m-user-panel
         max-height 1000px
@@ -140,7 +145,7 @@ export default {
     width 30px
     height 30px
     border-radius 50%
-    border 1px solid $black5
+    border 1px solid $border0
     margin 9px 0
     overflow hidden
     img
@@ -168,6 +173,7 @@ export default {
     li
         padding 20px
         text-align center
+        white-space nowrap
         &:hover
             color $white0
             background-color $base6
