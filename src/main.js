@@ -44,9 +44,12 @@ import store from './store'
 
 import './mock'
 
-import 'normalize.css'
+import 'normalize.css/normalize.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import 'animate.css/animate.css'
 import '@/style/reset.styl'
+import '@/style/m-element.styl'
+import '@/style/transition.styl'
 
 Vue.config.productionTip = false
 

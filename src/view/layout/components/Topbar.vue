@@ -39,7 +39,7 @@
                 <div class="m-user-panel-box">
                     <div class="m-user-panel">
                         <ul class="m-user-list">
-                            <li @click="handleLogout">退出系統</li>
+                            <li @click="handleLogout">{{$t('common.logout')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -58,6 +58,7 @@ export default {
         handleSetLanguage: function(language) {
             this.setLanguage(language);
             this.$i18n.locale = language;
+            location.reload();
         },
         handleLogout: function() {
             this.logout().then(() => {
@@ -95,17 +96,17 @@ export default {
     cursor pointer
     &:hover .m-language-panel
         max-height 1000px
-        transition all 0.3s
+        transition all 0.2s
     &:hover .m-language-link-arrow
         transform rotate(-180deg)
-        transition all 0.3s
+        transition all 0.2s
 .m-language-link
     padding 0 20px
     line-height 50px
     display flex
 .m-language-link-arrow
     margin-left 10px
-    transition all 0.3s
+    transition all 0.2s
 .m-language-panel-box
     position absolute
     top 50px
@@ -115,7 +116,7 @@ export default {
     color $white0
     background-color $base5
     max-height 0
-    transition all 0.3s
+    transition all 0.2s
     overflow hidden
     box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 .m-language-list
@@ -133,10 +134,10 @@ export default {
     cursor pointer
     &:hover .m-user-panel
         max-height 1000px
-        transition all 0.3s
+        transition all 0.2s
     &:hover .m-user-link-arrow
         transform rotate(-180deg)
-        transition all 0.3s
+        transition all 0.2s
 .m-user-link
     padding 0 20px
     line-height 50px
@@ -156,7 +157,7 @@ export default {
     margin-left 10px
 .m-user-link-arrow
     margin-left 10px
-    transition all 0.3s
+    transition all 0.2s
 .m-user-panel-box
     position absolute
     top 50px
@@ -166,7 +167,7 @@ export default {
     color $white0
     background-color $base5
     max-height 0
-    transition all 0.3s
+    transition all 0.2s
     overflow hidden
     box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 .m-user-list

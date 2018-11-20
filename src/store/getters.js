@@ -6,7 +6,7 @@ const getters = {
     avatar: state => state.login.userInfo.avatar,
     // layout
     language: state => state.layout.language,
-    isCollapse: state => state.layout.isCollapse
+    isCollapse: state => state.layout.isCollapse,
 }
 
 export default getters

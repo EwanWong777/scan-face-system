@@ -10,32 +10,33 @@
                 </div>
             </div>
         </div>
-        <ul class="m-menu-first">
-            <li v-for="(firstmenu,index) in menu" :key="index">
-                <div class="m-menu-first-link" @click="handleToggleSubmenu(firstmenu)">
-                    <router-link :to="firstmenu.link">
-                        <div class="m-menu-first-icon" v-html="firstmenu.icon"></div>
-                        <div class="m-menu-first-text" v-show="!isCollapse">
-                            {{firstmenu.title}}
-                        </div>
-                        <div class="m-menu-first-arrow" v-if="firstmenu.children" v-show="!isCollapse">
-                            <i class="el-icon-arrow-down"></i>
-                        </div>
-                    </router-link>
-                </div>
-                <ul class="m-menu-second" v-show="isCollapse || firstmenu.showChildren" v-if="firstmenu.children">
-                    <li v-for="(secondmenu,index) in firstmenu.children" :key="index">
-                        <div class="m-menu-second-link">
-                            <router-link :to="secondmenu.link">
-                                <div class="m-menu-second-text">
-                                    {{secondmenu.title}}
-                                </div>
-                            </router-link>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <div class="m-el-menu">
+            <transition name="el-fade-in">
+                <el-menu :default-active="$route.path" class="el-menu-vertical-demo" :collapse="isCollapse" router>
+                    <template v-for="(first,index) in menu">
+                        <el-menu-item :index="first.path" :key="index" v-if="!first.children">
+                            <i :class="first.icon"></i>
+                            <span slot="title">{{first.name}}</span>
+                        </el-menu-item>
+                        <el-submenu :index="'first'+index" :key="index" v-else>
+                            <template slot="title">
+                                <i :class="first.icon"></i>
+                                <span slot="title">{{first.name}}</span>
+                            </template>
+                            <template v-for="(second,index) in first.children">
+                                <el-menu-item :index="second.path" :key="index" v-if="!second.children">{{second.name}}</el-menu-item>
+                                <el-submenu :index="'second'+index" :key="index" v-else>
+                                    <span slot="title">{{second.name}}</span>
+                                    <template v-for="(third,index) in second.children">
+                                        <el-menu-item :index="third.path" :key="index">{{third.name}}</el-menu-item>
+                                    </template>
+                                </el-submenu>
+                            </template>
+                        </el-submenu>
+                    </template>
+                </el-menu>
+            </transition>
+        </div>
     </div>
 </template>
 <script>
@@ -45,53 +46,31 @@ export default {
         return {
             menu: [
                 {
-                    title: "菜单一",
-                    link: "$route.path",
-                    icon: '<i class="fas fa-home"></i>',
-                    showChildren: true,
+                    name: this.$t("common.home"),
+                    icon: "fas fa-home",
+                    path: "/home"
+                },
+                {
+                    name: this.$t("common.admin"),
+                    icon: "fab fa-adversal",
+                    path: "/login",
                     children: [
                         {
-                            title: "菜单一一",
-                            link: "/home"
-                        },
-                        {
-                            title: "菜单一二",
-                            link: "/home"
+                            name: this.$t("common.userManagement"),
+                            path: "/user"
                         }
                     ]
                 },
                 {
-                    title: "菜单二",
-                    link: "",
-                    icon: '<i class="fas fa-lock"></i>',
-                    showChildren: false,
-                    children: [
-                        {
-                            title: "菜单二一",
-                            link: "/home"
-                        },
-                        {
-                            title: "菜单二二",
-                            link: "/home"
-                        }
-                    ]
-                },
-                {
-                    title: "菜单三",
-                    link: "/home",
-                    icon: '<i class="fas fa-user"></i>',
-                    showChildren: false
+                    name: this.$t("common.blank"),
+                    icon: "fas fa-box-open",
+                    path: "/blank"
                 }
             ]
         };
     },
     computed: {
         ...mapGetters(["isCollapse"])
-    },
-    methods: {
-        handleToggleSubmenu: function(item) {
-            item.showChildren = !item.showChildren;
-        }
     }
 };
 </script>
@@ -118,99 +97,38 @@ export default {
     overflow hidden
 // 展开
 .m-sidebar-open
-    width 250px
-    transition all 0.3s
+    width 256px
+    transition all 0.2s
     .m-logo
         height 200px
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-img
         padding 0 40px
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-container
         max-width 180px
         max-height 180px
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-text
         margin-top 20px
         height 20px
-        transition all 0.3s
+        transition all 0.2s
 // 折叠
 .m-sidebar-close
-    width 50px
-    transition all 0.3s
+    width 64px
+    transition all 0.2s
     .m-logo
         height 50px
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-img
         padding 0
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-container
-        max-width 30px
+        max-width 40px
         max-height 30px
-        transition all 0.3s
+        transition all 0.2s
     .m-logo-text
         margin-top 0
         height 0
-        transition all 0.3s
-// 菜单
-.m-menu-first>li
-    position relative
-.m-menu-first-link>a
-    display block
-    color $white0
-    line-height 50px
-    display flex
-    &:hover
-        background-color $white2
-.m-menu-first-link>.router-link-active
-    background-color $white2
-.m-menu-first-icon
-    width 20px
-    text-align center
-    margin-left 20px
-.m-menu-first-text
-    margin-left 10px
-    white-space nowrap
-    overflow hidden
-    flex 1
-.m-menu-first-arrow
-    margin-right 20px
-.m-menu-second-link>a
-    display block
-    color $white0
-    line-height 50px
-    &:hover
-        background-color $white2
-.m-menu-second-text
-    margin-left 50px
-    white-space nowrap
-    overflow hidden
-    flex 1
-.m-sidebar-open
-    .m-menu-first-text
-        opacity 1
-    .m-menu-first-arrow
-        opacity 1
-    .m-menu-second-text
-        margin-left 50px
-.m-sidebar-close
-    .m-menu-first>li
-        &:hover .m-menu-second
-            display block
-    .m-menu-first-text
-        opacity 0
-    .m-menu-first-arrow
-        opacity 0
-    .m-menu-second
-        position absolute
-        left 80px
-        top 0
-        background-color #fff
-        padding 0 20px
-        display none
-    .m-menu-second-link>a
-        color #333
-    .m-menu-second-text
-        margin-left 0
+        transition all 0.2s
 </style>
-

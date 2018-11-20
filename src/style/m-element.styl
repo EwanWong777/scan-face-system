@@ -1,0 +1,35 @@
+@import 'variables.styl'
+// 侧栏菜单
+.m-el-menu
+    .el-menu
+        background-color transparent
+        border-right none
+        width 256px
+    .el-submenu [class^='fa']
+        margin-right 5px
+        width 24px
+        text-align center
+        vertical-align middle
+    .el-submenu__title
+        color $white0
+        &:hover
+            background-color $white3
+    .el-submenu__title i
+        color $white0
+    .el-menu-item-group__title
+        color $white0
+    .el-menu-item
+        color $white0
+        &:hover, &:focus
+            background-color $white3
+    .el-menu-item i
+        color $white0
+    .el-menu-item.is-active
+        background-color $white3
+    .el-menu-item [class^='fa']
+        margin-right 5px
+        width 24px
+        text-align center
+        vertical-align middle
+    .el-menu--collapse
+        width 64px

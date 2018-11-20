@@ -26,6 +26,7 @@ const layout = {
             commit
         }, language) {
             commit('SET_LANGUAGE', language)
+            Cookies.set('language', language)
         }
     }
 }

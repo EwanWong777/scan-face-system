@@ -7,20 +7,20 @@
                     <img src="@/assets/logo-black.svg" alt="">
                 </div>
                 <div class="m-login-title">
-                    后台管理系统模板
+                    {{$t('common.title')}}
                 </div>
                 <el-form>
                     <el-form-item :class="errorBags.has('username')?'is-error':''">
-                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z][a-zA-Z0-9_.@~!?]{4,16}$/ }" :data-vv-as="$t('login.username')" v-model="loginForm.username" name="username" placeholder="请输入用户名/手机号" auto-complete="on" class="m-login-input">
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z][a-zA-Z0-9_.@~!?]{4,16}$/ }" :data-vv-as="$t('login.username')" v-model="loginForm.username" name="username" :placeholder="$t('login.usernamePlaceholder')" auto-complete="on" class="m-login-input">
                         </el-input>
                         <div class="m-form-error" v-show="errorBags.has('username')">{{ errorBags.first('username') }}</div>
                     </el-form-item>
                     <el-form-item :class="errorBags.has('password')?'is-error':''">
-                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }" :data-vv-as="$t('login.password')" v-model="loginForm.password" name="password" placeholder="请输入密码" auto-complete="on" class="m-login-input" @keyup.enter.native="handleLoginByUserName">
+                        <el-input v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }" :data-vv-as="$t('login.password')" v-model="loginForm.password" name="password" :placeholder="$t('login.passwordPlaceholder')" auto-complete="on" class="m-login-input" @keyup.enter.native="handleLoginByUserName">
                         </el-input>
                         <div class="m-form-error" v-show="errorBags.has('password')">{{ errorBags.first('password') }}</div>
                     </el-form-item>
-                    <el-button type="primary" class="m-login-btn" @click="handleLoginByUserName">登录</el-button>
+                    <el-button type="primary" class="m-login-btn" @click="handleLoginByUserName">{{$t('login.login')}}</el-button>
                 </el-form>
             </div>
         </div>

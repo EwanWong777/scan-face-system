@@ -5,10 +5,17 @@ export default {
         // 网页语言
         language: 'ENGLISH',
         // 导航
-        home: 'home',
+        home: 'HOME',
+        admin: 'ADMIN',
+        userManagement: 'USER MANAGEMENT',
+        blank: 'BLANK',
+        logout: 'Login Out'
     },
     login: {
         username: 'username',
-        password: 'password'
+        password: 'password',
+        usernamePlaceholder: 'Please enter user name/phone number',
+        passwordPlaceholder: 'Please enter password',
+        login: 'Login In'
     }
 }

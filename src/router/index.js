@@ -5,6 +5,8 @@ import Cookie from 'js-cookie'
 import Layout from '../view/layout/Layout'
 import Login from '../view/login/Login'
 import Home from '../view/home/Home'
+import User from '../view/user/User'
+import Blank from '../view/blank/Blank'
 
 Vue.use(VueRouter)
 
@@ -18,6 +20,12 @@ const routes = [{
     children: [{
         path: '/home',
         component: Home,
+    }, {
+        path: '/user',
+        component: User,
+    }, {
+        path: '/blank',
+        component: Blank,
     }],
     meta: {
         login: true

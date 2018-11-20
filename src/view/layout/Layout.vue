@@ -13,7 +13,9 @@
                 </div>
                 <div class="m-layout-right-body">
                     <vue-scroll>
-                        <router-view></router-view>
+                        <transition name="slide-fade" mode="out-in" appear>
+                            <router-view></router-view>
+                        </transition>
                     </vue-scroll>
                 </div>
             </div>
