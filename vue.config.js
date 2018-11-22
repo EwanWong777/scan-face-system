@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production' ? '/demo-admin/' : '/',
+    baseUrl: process.env.NODE_ENV === 'production' ? '/face-recognition-admin/' : '/',
     // 跨域
     // devServer: {
     //     proxy: {

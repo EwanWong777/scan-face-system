@@ -1,4 +1,4 @@
-# demo-admin
+# face-recognition-admin
 
 ## Project setup
 ```
