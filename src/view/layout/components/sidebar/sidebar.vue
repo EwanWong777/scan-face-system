@@ -6,7 +6,7 @@
                     <img src="@/assets/logo-white.svg" alt="">
                 </div>
                 <div class="m-logo-text">
-                    {{$t('common.title')}}
+                    {{$t('layout.title')}}
                 </div>
             </div>
         </div>
@@ -46,23 +46,23 @@ export default {
         return {
             menu: [
                 {
-                    name: this.$t("common.home"),
+                    name: this.$t("layout.home"),
                     icon: "fas fa-home",
                     path: "/home"
                 },
                 {
-                    name: this.$t("common.admin"),
+                    name: this.$t("layout.admin"),
                     icon: "fab fa-adversal",
                     path: "/login",
                     children: [
                         {
-                            name: this.$t("common.userManagement"),
+                            name: this.$t("layout.userManagement"),
                             path: "/user"
                         }
                     ]
                 },
                 {
-                    name: this.$t("common.blank"),
+                    name: this.$t("layout.blank"),
                     icon: "fas fa-box-open",
                     path: "/blank"
                 }
@@ -75,7 +75,7 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-@import '../../../style/variables.styl'
+@import '../../../../style/variables.styl'
 .m-logo
     display flex
     justify-content center

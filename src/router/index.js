@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Cookie from 'js-cookie'
 
-import Layout from '../view/layout/Layout'
-import Login from '../view/login/Login'
-import Home from '../view/home/Home'
-import User from '../view/user/User'
-import Blank from '../view/blank/Blank'
+import Login from '../view/login/login'
+import Layout from '../view/layout/layout'
+import Home from '../view/home/home'
+import User from '../view/user/user'
+import Blank from '../view/blank/blank'
 
 Vue.use(VueRouter)
 

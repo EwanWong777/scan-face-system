@@ -9,7 +9,7 @@
             <div class="m-language">
                 <div class="m-language-link">
                     <div class="m-language-link-text">
-                        {{$t('common.language')}}
+                        {{$t('layout.language')}}
                     </div>
                     <div class="m-language-link-arrow">
                         <i class="el-icon-arrow-down"></i>
@@ -39,7 +39,7 @@
                 <div class="m-user-panel-box">
                     <div class="m-user-panel">
                         <ul class="m-user-list">
-                            <li @click="handleLogout">{{$t('common.logout')}}</li>
+                            <li @click="handleLogout">{{$t('layout.logout')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-@import '../../../style/variables.styl'
+@import '../../../../style/variables.styl'
 // 布局
 .m-topbar
     height 50px

@@ -23,8 +23,8 @@
     </div>
 </template>
 <script>
-import Topbar from "./components/Topbar";
-import Sidebar from "./components/Sidebar";
+import Topbar from "./components/topbar/topbar";
+import Sidebar from "./components/sidebar/sidebar";
 import { mapActions } from "vuex";
 export default {
     created() {
@@ -43,6 +43,7 @@ export default {
 @import '../../style/variables.styl'
 // 布局
 .m-layout
+    width 100%
     height 100%
     position relative
 .m-layout-bg

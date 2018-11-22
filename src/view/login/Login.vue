@@ -7,7 +7,7 @@
                     <img src="@/assets/logo-black.svg" alt="">
                 </div>
                 <div class="m-login-title">
-                    {{$t('common.title')}}
+                    {{$t('login.title')}}
                 </div>
                 <el-form>
                     <el-form-item :class="errorBags.has('username')?'is-error':''">
