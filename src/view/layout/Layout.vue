@@ -52,8 +52,8 @@ export default {
     top 0
     width 100%
     height 100%
-    background -webkit-linear-gradient(to bottom, $base3, $base7)
-    background linear-gradient(to bottom, $base3, $base7)
+    background -webkit-linear-gradient(to top, #000, #000)
+    background linear-gradient(to top, #000, #000)
 .m-layout-container
     position absolute
     left 0

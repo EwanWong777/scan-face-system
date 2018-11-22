@@ -72,7 +72,7 @@ export default {
 @import '../../../../style/variables.styl'
 // 布局
 .m-topbar
-    height 50px
+    height 48px
     background-color $white0
     display flex
     border-bottom 1px solid $border0
@@ -84,9 +84,9 @@ export default {
     justify-content flex-end
 // 侧栏收缩
 .m-toggle-btn
-    width 50px
+    width 48px
     text-align center
-    line-height 50px
+    line-height 48px
     border-right 1px solid $border0
     cursor pointer
 // 语言
@@ -102,14 +102,14 @@ export default {
         transition all 0.2s
 .m-language-link
     padding 0 20px
-    line-height 50px
+    line-height 48px
     display flex
 .m-language-link-arrow
     margin-left 10px
     transition all 0.2s
 .m-language-panel-box
     position absolute
-    top 50px
+    top 48px
     right 20px
     padding-top 10px
 .m-language-panel
@@ -140,7 +140,7 @@ export default {
         transition all 0.2s
 .m-user-link
     padding 0 20px
-    line-height 50px
+    line-height 48px
     display flex
 .m-user-link-img
     width 30px
@@ -160,7 +160,7 @@ export default {
     transition all 0.2s
 .m-user-panel-box
     position absolute
-    top 50px
+    top 48px
     right 20px
     padding-top 10px
 .m-user-panel

@@ -4,7 +4,7 @@
         <div class="m-login-container">
             <div class="m-login-panel">
                 <div class="m-login-logo">
-                    <img src="@/assets/logo-black.svg" alt="">
+                    <img src="@/assets/logo-orange.svg" alt="">
                 </div>
                 <div class="m-login-title">
                     {{$t('login.title')}}
@@ -68,8 +68,8 @@ export default {
     left 0
     width 100%
     height 100%
-    background -webkit-linear-gradient(to bottom, $base3, $base7)
-    background linear-gradient(to bottom, $base3, $base7)
+    background -webkit-linear-gradient(to bottom, #000, #000)
+    background linear-gradient(to bottom, #000, #000)
 .m-login-container
     position absolute
     top 0
@@ -88,10 +88,10 @@ export default {
     text-align center
     margin-bottom 20px
     img
-        width 150px
+        width 120px
 .m-login-title
     text-align center
-    font-size 24px
+    font-size 28px
     font-weight bold
     margin-bottom 40px
 .m-form-error

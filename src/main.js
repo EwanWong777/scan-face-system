@@ -5,7 +5,7 @@ import '../theme/index.css'
 import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI, {
-  size: 'small',
+  // size: 'small',
   zIndex: 3000,
   i18n: (key, value) => i18n.t(key, value)
 })

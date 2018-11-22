@@ -1,18 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800px" height="385px" viewBox="0 0 800 385" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>icon</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(-100.000000, -308.000000)" fill="#FFF">
-            <g id="icon" transform="translate(100.000000, 308.000000)">
-                <polygon id="Combined-Shape" points="444.444444 0 622.222222 307.920144 577.777778 384.900179 355.555556 0"></polygon>
-                <polygon id="Combined-Shape" points="622.222222 0 711.111111 153.960072 666.666667 230.940108 533.333333 0"></polygon>
-                <polygon id="Polygon" transform="translate(755.555556, 38.490018) scale(1, -1) translate(-755.555556, -38.490018) " points="755.555556 0 800 76.9800359 711.111111 76.9800359"></polygon>
-                <polygon id="Combined-Shape" points="88.8888889 0 266.666667 307.920144 222.222222 384.900179 0 0"></polygon>
-                <polygon id="Combined-Shape" points="266.666667 0 355.555556 153.960072 311.111111 230.940108 177.777778 0"></polygon>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.98 149.53">
+    <defs>
+        <style>.cls-1{fill:#fff;}</style>
+    </defs>
+    <path class="cls-1" d="M155.85,71.75C96,31.6,33.93,38.88,33.93,38.88,14.83,64.13,20.29,91,20.29,91c22.29,16.38,48.45,23.88,48.45,23.88,40.14,13.19,72.78,8.76,72.78,8.76A67,67,0,0,0,155.85,71.75Zm-20.24,41.17S81.46,118,30.75,84.6c0,0-1.37-18.76,9.09-34.57,0,0,54.81-5.57,105.08,28.2A58.69,58.69,0,0,1,135.61,112.92Z"/>
+    <path class="cls-1" d="M164.41,78.9s1.48,24-11.37,42.42c0,0,19.33-3.53,22.52-17.29C175.56,104,179.31,94.14,164.41,78.9Z"/>
+    <path class="cls-1" d="M22.45,41.15S10.73,58.32,11.3,83.23C11.3,83.23-20.43,53.88,22.45,41.15Z"/>
+    <path class="cls-1" d="M22.6,102s46.05,32.53,111.34,30c0,0-26.83,28.66-72.21,12.74C61.73,144.72,32.27,133,22.6,102Z"/>
+    <path class="cls-1" d="M110.82,16.48A18.32,18.32,0,0,1,117,12.79a7.56,7.56,0,1,0-1.62-7.86,27.44,27.44,0,0,0-12.8,9.3c-34-7.09-56.14,12.46-60.75,16.19,0,0,57.09-4.32,111.79,29.57C153.58,60,143.18,27.51,110.82,16.48Z"/>
 </svg>

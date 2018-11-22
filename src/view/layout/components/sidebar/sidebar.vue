@@ -82,53 +82,50 @@ export default {
     align-items center
     cursor pointer
 .m-logo-container
-    overflow hidden
-.m-logo-img
-    img
-        display block
-        width 100%
-        height 100%
+    display flex
+    flex-direction column
+    align-items center
 .m-logo-text
     color $white0
     font-weight bold
-    font-size 18px
+    font-size 28px
     text-align center
     white-space nowrap
     overflow hidden
+.m-logo-img
+    img
+        max-width 100%
+        max-height 100%
 // 展开
 .m-sidebar-open
     width 256px
     transition all 0.2s
     .m-logo
-        height 200px
+        height 192px
         transition all 0.2s
     .m-logo-img
-        padding 0 40px
-        transition all 0.2s
-    .m-logo-container
-        max-width 180px
-        max-height 180px
+        width 144px
+        height 96px
         transition all 0.2s
     .m-logo-text
+        max-width 1000px
+        max-height 1000px
         margin-top 20px
-        height 20px
         transition all 0.2s
 // 折叠
 .m-sidebar-close
     width 64px
     transition all 0.2s
     .m-logo
-        height 50px
+        height 48px
         transition all 0.2s
     .m-logo-img
-        padding 0
-        transition all 0.2s
-    .m-logo-container
-        max-width 40px
-        max-height 30px
+        width 48px
+        height 32px
         transition all 0.2s
     .m-logo-text
-        margin-top 0
+        width 0
         height 0
+        margin-top 0
         transition all 0.2s
 </style>

@@ -1,7 +1,7 @@
 export default {
     login: {
         // 登录标题
-        title: "SUPER SYSTEM",
+        title: "BF-SYSTEM",
         // 表单placeholder
         usernamePlaceholder: "Please enter user name/phone number",
         passwordPlaceholder: "Please enter password",
@@ -13,7 +13,7 @@ export default {
     },
     layout: {
         // 网页标题
-        title: "SUPER SYSTEM",
+        title: "BF-SYSTEM",
         // 网页语言
         language: "ENGLISH",
         // 导航
