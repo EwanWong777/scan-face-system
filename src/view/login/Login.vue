@@ -20,7 +20,9 @@
                         </el-input>
                         <div class="m-form-error" v-show="errorBags.has('password')">{{ errorBags.first('password') }}</div>
                     </el-form-item>
-                    <el-button type="primary" class="m-login-btn" @click="handleLoginByUserName">{{$t('login.login')}}</el-button>
+                    <el-form-item>
+                        <el-button type="primary" class="m-login-btn" @click="handleLoginByUserName">{{$t('login.login')}}</el-button>
+                    </el-form-item>
                 </el-form>
             </div>
         </div>
@@ -68,8 +70,7 @@ export default {
     left 0
     width 100%
     height 100%
-    background -webkit-linear-gradient(to bottom, #000, #000)
-    background linear-gradient(to bottom, #000, #000)
+    background #212121
 .m-login-container
     position absolute
     top 0

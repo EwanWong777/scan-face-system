@@ -39,6 +39,7 @@
                 <div class="m-user-panel-box">
                     <div class="m-user-panel">
                         <ul class="m-user-list">
+                            <li>个人中心</li>
                             <li @click="handleLogout">{{$t('layout.logout')}}</li>
                         </ul>
                     </div>
@@ -76,18 +77,20 @@ export default {
     background-color $white0
     display flex
     border-bottom 1px solid $border0
+    padding-right 20px
 .m-topbar-left
     display flex
 .m-topbar-right
     flex 1
     display flex
     justify-content flex-end
+    border-right 1px solid $border0
 // 侧栏收缩
 .m-toggle-btn
     width 48px
     text-align center
-    line-height 48px
     border-right 1px solid $border0
+    line-height 48px
     cursor pointer
 // 语言
 .m-language
@@ -110,7 +113,7 @@ export default {
 .m-language-panel-box
     position absolute
     top 48px
-    right 20px
+    right 0
     padding-top 10px
 .m-language-panel
     color $white0
@@ -121,7 +124,8 @@ export default {
     box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 .m-language-list
     li
-        padding 20px
+        line-height 48px
+        padding 0 20px
         text-align center
         white-space nowrap
         &:hover
@@ -161,7 +165,7 @@ export default {
 .m-user-panel-box
     position absolute
     top 48px
-    right 20px
+    right 0
     padding-top 10px
 .m-user-panel
     color $white0
@@ -172,7 +176,8 @@ export default {
     box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
 .m-user-list
     li
-        padding 20px
+        line-height 48px
+        padding 0 20px
         text-align center
         white-space nowrap
         &:hover

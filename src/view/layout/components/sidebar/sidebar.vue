@@ -3,7 +3,7 @@
         <div class="m-logo">
             <div class="m-logo-container">
                 <div class="m-logo-img">
-                    <img src="@/assets/logo-white.svg" alt="">
+                    <img src="@/assets/logo-orange.svg" alt="">
                 </div>
                 <div class="m-logo-text">
                     {{$t('layout.title')}}
@@ -85,17 +85,16 @@ export default {
     display flex
     flex-direction column
     align-items center
-.m-logo-text
-    color $white0
-    font-weight bold
-    font-size 28px
-    text-align center
-    white-space nowrap
-    overflow hidden
 .m-logo-img
     img
         max-width 100%
         max-height 100%
+.m-logo-text
+    color $white0
+    font-weight bold
+    font-size 24px
+    white-space nowrap
+    overflow hidden
 // 展开
 .m-sidebar-open
     width 256px
@@ -104,8 +103,8 @@ export default {
         height 192px
         transition all 0.2s
     .m-logo-img
-        width 144px
-        height 96px
+        width 120px
+        height 80px
         transition all 0.2s
     .m-logo-text
         max-width 1000px

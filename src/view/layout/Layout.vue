@@ -52,8 +52,7 @@ export default {
     top 0
     width 100%
     height 100%
-    background -webkit-linear-gradient(to top, #000, #000)
-    background linear-gradient(to top, #000, #000)
+    background #212121
 .m-layout-container
     position absolute
     left 0
@@ -72,7 +71,7 @@ export default {
     z-index 100
 .m-layout-right-body
     flex 1
-    z-index 99
-    background-color $white7
+    background-color $white9
     overflow auto
+    z-index 99
 </style>
