@@ -21,6 +21,17 @@ export default {
         admin: '管理员',
         userManagement: '用户管理',
         blank: '空页面',
+        // 用户菜单
+        personalCenter: '个人中心',
         logout: '退出系统'
+    },
+    home: {
+        user: '用户',
+        message: '消息',
+        earnings: '收益',
+        date: '日期',
+        lineChart: '线图',
+        pieChart: '饼图',
+        barChart: '柱状图',
     }
 }

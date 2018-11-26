@@ -39,7 +39,7 @@
                 <div class="m-user-panel-box">
                     <div class="m-user-panel">
                         <ul class="m-user-list">
-                            <li>个人中心</li>
+                            <li>{{$t('layout.personalCenter')}}</li>
                             <li @click="handleLogout">{{$t('layout.logout')}}</li>
                         </ul>
                     </div>

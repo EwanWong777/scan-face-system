@@ -8,7 +8,7 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="m-card-panel-text">
-                            <h4>用户</h4>
+                            <h4>{{$t('home.user')}}</h4>
                             <h1>10,000</h1>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                             <i class="fas fa-comment-dots"></i>
                         </div>
                         <div class="m-card-panel-text">
-                            <h4>消息</h4>
+                            <h4>{{$t('home.message')}}</h4>
                             <h1>20</h1>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             <i class="fas fa-yen-sign"></i>
                         </div>
                         <div class="m-card-panel-text">
-                            <h4>收益</h4>
+                            <h4>{{$t('home.earnings')}}</h4>
                             <h1>88,888</h1>
                         </div>
                     </div>
@@ -41,32 +41,78 @@
                             <i class="fas fa-calendar-alt"></i>
                         </div>
                         <div class="m-card-panel-text">
-                            <h4>日期</h4>
-                            <h1>10,000</h1>
+                            <h4>{{$t('home.date')}}</h4>
+                            <h1>{{date}}</h1>
                         </div>
                     </div>
                 </el-col>
             </el-row>
         </div>
         <div class="m-chart">
-            <div ref="mEchart" class="m-chart-container"></div>
+            <div class="m-chart-header">
+                <div class="m-chart-header-left">
+                    <div class="m-chart-title">
+                        {{$t('home.lineChart')}}
+                    </div>
+                </div>
+                <div class="m-chart-header-right">
+                    <div class="m-chart-form">
+                        <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+                    </div>
+                </div>
+            </div>
+            <div class="m-chart-body">
+                <div ref="mLineChart" class="m-line-chart"></div>
+            </div>
+        </div>
+        <div class="m-chart">
+            <div class="m-chart-header">
+                <div class="m-chart-header-left">
+                    <div class="m-chart-title">
+                        {{$t('home.pieChart')}}
+                    </div>
+                </div>
+                <div class="m-chart-header-right">
+                    <div class="m-chart-form">
+                        <el-date-picker v-model="value2" type="date" placeholder="选择日期"></el-date-picker>
+                    </div>
+                </div>
+            </div>
+            <div class="m-chart-body">
+                <div ref="mPieChart" class="m-pie-chart"></div>
+            </div>
         </div>
     </div>
 </template>
 <script>
-import echarts from "echarts";
 export default {
     data() {
         return {
-            chart: null
+            date: "",
+            value1: "",
+            value2: ""
         };
     },
     mounted() {
-        this.initChart();
+        this.date = this.initDate(new Date());
+        this.initLineChart();
+        this.initPieChart();
+        this.value1 = new Date();
+        this.value2 = new Date();
     },
     methods: {
-        initChart() {
-            this.chart = echarts.init(this.$refs.mEchart);
+        // 格式化时间
+        initDate(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            m = m < 10 ? "0" + m : m;
+            var d = date.getDate();
+            d = d < 10 ? "0" + d : d;
+            return y + "-" + m + "-" + d;
+        },
+        // 线图
+        initLineChart() {
+            let mLineChart = this.$echarts.init(this.$refs.mLineChart);
             let option = {
                 legend: {
                     data: ["销量"]
@@ -83,9 +129,70 @@ export default {
                         smooth: true
                     }
                 ],
-                color: ["#FF9800"]
+                color: [
+                    "#F44336",
+                    "#FF9800",
+                    "#FFEB3B",
+                    "#4CAF50",
+                    "#00BCD4",
+                    "#2196F3",
+                    "#9C27B0"
+                ]
             };
-            this.chart.setOption(option);
+            mLineChart.setOption(option);
+        },
+        // 饼图
+        initPieChart() {
+            let mPieChart = this.$echarts.init(this.$refs.mPieChart);
+            let option = {
+                tooltip: {
+                    trigger: "item",
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: "vertical",
+                    left: "left",
+                    data: [
+                        "直接访问",
+                        "邮件营销",
+                        "联盟广告",
+                        "视频广告",
+                        "搜索引擎"
+                    ]
+                },
+                series: [
+                    {
+                        name: "访问来源",
+                        type: "pie",
+                        radius: "55%",
+                        center: ["50%", "60%"],
+                        data: [
+                            { value: 335, name: "直接访问" },
+                            { value: 310, name: "邮件营销" },
+                            { value: 234, name: "联盟广告" },
+                            { value: 135, name: "视频广告" },
+                            { value: 1548, name: "搜索引擎" }
+                        ],
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: "rgba(0, 0, 0, 0.5)"
+                            }
+                        }
+                    }
+                ],
+                color: [
+                    "#F44336",
+                    "#FF9800",
+                    "#FFEB3B",
+                    "#4CAF50",
+                    "#00BCD4",
+                    "#2196F3",
+                    "#9C27B0"
+                ]
+            };
+            mPieChart.setOption(option);
         }
     }
 };
@@ -113,9 +220,22 @@ export default {
         margin-bottom 10px
         color $font2
 .m-chart
-    height 400px
     background-color $white0
     padding 20px
-.m-chart-container
-    height 100%
+    margin-bottom 20px
+.m-chart-header
+    display flex
+    margin-bottom 20px
+.m-chart-title
+    font-size 18px
+    font-weight bold
+    line-height 40px
+.m-chart-header-right
+    flex 1
+    display flex
+    justify-content flex-end
+.m-line-chart
+    height 400px
+.m-pie-chart
+    height 400px
 </style>

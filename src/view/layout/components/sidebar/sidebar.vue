@@ -92,7 +92,7 @@ export default {
 .m-logo-text
     color $white0
     font-weight bold
-    font-size 24px
+    font-size 20px
     white-space nowrap
     overflow hidden
 // 展开
@@ -103,8 +103,8 @@ export default {
         height 192px
         transition all 0.2s
     .m-logo-img
-        width 120px
-        height 80px
+        width 88px
+        height 56px
         transition all 0.2s
     .m-logo-text
         max-width 1000px
@@ -119,8 +119,8 @@ export default {
         height 48px
         transition all 0.2s
     .m-logo-img
-        width 48px
-        height 32px
+        width 44px
+        height 28px
         transition all 0.2s
     .m-logo-text
         width 0

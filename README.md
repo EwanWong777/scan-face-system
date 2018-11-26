@@ -1,4 +1,4 @@
-# face-recognition-admin
+# brush-face-system
 
 ## Project setup
 ```

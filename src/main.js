@@ -40,6 +40,9 @@ const config = {
 };
 Vue.use(VeeValidate, config);
 
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 import router from './router'
 import i18n from './i18n'
 import store from './store'
