@@ -5,11 +5,9 @@ import {
 } from '@/util/auth'
 import {
     loginByUserName,
-    getUserInfo,
     logout
 } from '@/api/login'
 
-const SET_ROLES = 'SET_ROLES'
 const SET_TOKEN = 'SET_TOKEN'
 const SET_NAME = 'SET_NAME'
 const SET_AVATAR = 'SET_AVATAR'
@@ -17,17 +15,12 @@ const SET_AVATAR = 'SET_AVATAR'
 const login = {
     state: {
         userInfo: {
-            roles: [],
             token: getToken(),
-            introduction: '',
-            avatar: '',
-            name: ''
+            name: window.localStorage.getItem("name"),
+            avatar: window.localStorage.getItem("avatar"),
         }
     },
     mutations: {
-        [SET_ROLES](state, roles) {
-            state.userInfo.roles = roles
-        },
         [SET_TOKEN](state, token) {
             state.userInfo.token = token
         },
@@ -46,26 +39,17 @@ const login = {
                 loginByUserName(loginForm.username, loginForm.password)
                     .then((res) => {
                         const data = res.data
-                        commit('SET_ROLES', data.roles)
-                        commit('SET_TOKEN', data.token)
-                        setToken(data.token)
-                        resolve()
-                    }).catch(error => {
-                        reject(error)
-                    })
-            })
-        },
-        getUserInfo({
-            commit,
-            state
-        }) {
-            return new Promise((resolve, reject) => {
-                getUserInfo(state.userInfo.token)
-                    .then((res) => {
-                        const data = res.data
-                        commit('SET_NAME', data.name)
-                        commit('SET_AVATAR', data.avatar)
-                        resolve()
+                        if (data.token) {
+                            commit('SET_TOKEN', data.token)
+                            setToken(data.token)
+                            commit('SET_NAME', data.alias)
+                            window.localStorage.setItem("name", data.alias)
+                            commit('SET_AVATAR', data.avatar)
+                            window.localStorage.setItem("avatar", data.avatar)
+                            resolve()
+                        } else {
+                            resolve(data.errmsg)
+                        }
                     }).catch(error => {
                         reject(error)
                     })
@@ -77,9 +61,9 @@ const login = {
             return new Promise((resolve, reject) => {
                 logout()
                     .then(() => {
-                        commit('SET_ROLES', [])
                         commit('SET_TOKEN', '')
                         removeToken()
+                        window.localStorage.clear()
                         resolve()
                     })
                     .catch((error) => {

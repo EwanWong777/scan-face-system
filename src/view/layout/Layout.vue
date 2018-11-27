@@ -25,17 +25,10 @@
 <script>
 import Topbar from "./components/topbar/topbar";
 import Sidebar from "./components/sidebar/sidebar";
-import { mapActions } from "vuex";
 export default {
-    created() {
-        this.getUserInfo();
-    },
     components: {
         Topbar,
         Sidebar
-    },
-    methods: {
-        ...mapActions(["getUserInfo"])
     }
 };
 </script>

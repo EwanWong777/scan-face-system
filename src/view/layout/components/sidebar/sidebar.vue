@@ -51,13 +51,67 @@ export default {
                     path: "/home"
                 },
                 {
-                    name: this.$t("layout.admin"),
-                    icon: "fab fa-adversal",
-                    path: "/login",
+                    name: this.$t("layout.authorityManagement"),
+                    icon: "fas fa-lock",
+                    path: "/authorityManagement"
+                },
+                {
+                    name: this.$t("layout.userManagement"),
+                    icon: "fas fa-user-friends",
+                    path: "/userManagement"
+                },
+                {
+                    name: this.$t("layout.equipmentManagement"),
+                    icon: "fas fa-coins",
+                    path: "/equipmentManagement"
+                },
+                {
+                    name: this.$t("layout.companyConfiguration"),
+                    icon: "fas fa-archway",
+                    path: "/companyConfiguration"
+                },
+                {
+                    name: this.$t("layout.internalAddressBook"),
+                    icon: "fas fa-address-book",
+                    path: "/internalAddressBook"
+                },
+                {
+                    name: this.$t("layout.visitorManagement"),
+                    icon: "fas fa-address-card",
                     children: [
                         {
-                            name: this.$t("layout.userManagement"),
-                            path: "/user"
+                            name: this.$t("layout.visitorStatistics"),
+                            path: "/visitorStatistics"
+                        },
+                        {
+                            name: this.$t("layout.visitorRecord"),
+                            path: "/visitorRecord"
+                        },
+                        {
+                            name: this.$t("layout.visitorList"),
+                            path: "/visitorList"
+                        },
+                        {
+                            name: this.$t("layout.visitorCard"),
+                            path: "/visitorCard"
+                        }
+                    ]
+                },
+                {
+                    name: this.$t("layout.attendanceManagement"),
+                    icon: "fas fa-fingerprint",
+                    children: [
+                        {
+                            name: this.$t("layout.realTimeSign"),
+                            path: "/realTimeSign"
+                        },
+                        {
+                            name: this.$t("layout.signStatistics"),
+                            path: "/signStatistics"
+                        },
+                        {
+                            name: this.$t("layout.attendanceRecord"),
+                            path: "/attendanceRecord"
                         }
                     ]
                 },

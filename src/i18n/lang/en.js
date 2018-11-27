@@ -17,10 +17,22 @@ export default {
         // 网页语言
         language: "ENGLISH",
         // 导航
-        home: "Home",
-        admin: "Admin",
-        userManagement: "User Mangement",
-        blank: "Blank",
+        home: 'Home',
+        authorityManagement: 'Authority Management',
+        userManagement: 'User Management',
+        equipmentManagement: 'Equipment Management',
+        companyConfiguration: 'Company Configuration',
+        internalAddressBook: 'Internal Address Book',
+        visitorManagement: 'Visitor Management',
+        visitorStatistics: 'Visitor Statistics',
+        visitorRecord: 'Visitor Record',
+        visitorList: 'Visitor List',
+        visitorCard: 'Visitor Card',
+        attendanceManagement: 'Attendance Management',
+        realTimeSign: 'Real Time Sign',
+        signStatistics: 'Sign Statistics',
+        attendanceRecord: 'Attendance Record',
+        blank: 'Blank',
         // 用户菜单
         personalCenter: 'Personal Center',
         logout: "Login Out"

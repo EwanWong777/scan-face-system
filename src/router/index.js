@@ -5,7 +5,7 @@ import Cookie from 'js-cookie'
 import Login from '../view/login/login'
 import Layout from '../view/layout/layout'
 import Home from '../view/home/home'
-import User from '../view/user/user'
+import UserManagement from '../view/userManagement/userManagement'
 import Blank from '../view/blank/blank'
 
 Vue.use(VueRouter)
@@ -21,8 +21,8 @@ const routes = [{
         path: '/home',
         component: Home,
     }, {
-        path: '/user',
-        component: User,
+        path: '/userManagement',
+        component: UserManagement,
     }, {
         path: '/blank',
         component: Blank,

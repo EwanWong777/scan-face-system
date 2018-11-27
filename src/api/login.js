@@ -1,22 +1,18 @@
 import request from '@/util/request'
+import md5 from 'js-md5'
 
 export function loginByUserName(username, password) {
+    let timestamp = Math.round(new Date().getTime()/1000).toString()
+    let md5Password = md5(password)
+    let md5Sign = md5(timestamp + 'www.qihancloud.com')
     return request({
-        url: '/login/loginByUserName',
-        method: 'post',
-        data: {
-            username,
-            password
-        }
-    })
-}
-
-export function getUserInfo(token) {
-    return request({
-        url: '/login/getUserInfo',
-        method: 'post',
-        data: {
-            token
+        url: '/api/ucenter/user/login',
+        method: 'get',
+        params: {
+            account: username,
+            password: md5Password,
+            timestamp: timestamp,
+            sign: md5Sign,
         }
     })
 }
