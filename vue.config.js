@@ -5,7 +5,6 @@ module.exports = {
         proxy: {
             '/api': {
                 target: 'http://www.sanbotcloud.com',
-                ws: true,
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

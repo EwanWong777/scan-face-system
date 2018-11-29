@@ -59,11 +59,11 @@ export default {
         handleSetLanguage: function(language) {
             this.setLanguage(language);
             this.$i18n.locale = language;
-            location.reload();
+            window.location.reload();
         },
         handleLogout: function() {
             this.logout().then(() => {
-                location.reload();
+                window.location.reload();
             });
         }
     }
