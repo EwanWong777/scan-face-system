@@ -1,7 +1,7 @@
 <template>
     <div class="m-blank">
         <div class="m-blank-container">
-            空页
+            空页面
         </div>
     </div>
 </template>

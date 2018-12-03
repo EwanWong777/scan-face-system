@@ -235,7 +235,7 @@ export default {
     display flex
     justify-content flex-end
 .m-line-chart
-    height 400px
+    height 360px
 .m-pie-chart
-    height 400px
+    height 360px
 </style>
