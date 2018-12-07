@@ -2,11 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Cookie from 'js-cookie'
 
-import Login from '../view/login/login'
-import Layout from '../view/layout/layout'
-import Home from '../view/home/home'
-import UserManagement from '../view/userManagement/userManagement'
-import Blank from '../view/blank/blank'
+import Login from '@/view/login/login'
+import Layout from '@/view/layout/layout'
+import Home from '@/view/home/home'
+import AuthorityManagement from '@/view/authority-management/authorityManagement'
+import UserManagement from '@/view/user-management/userManagement'
+import EquipmentManagement from '@/view/equipment-management/equipmentManagement'
+import CompanyConfiguration from '@/view/company-configuration/companyConfiguration'
+import Blank from '@/view/blank/blank'
 
 Vue.use(VueRouter)
 
@@ -21,8 +24,17 @@ const routes = [{
         path: '/home',
         component: Home,
     }, {
+        path: '/authorityManagement',
+        component: AuthorityManagement,
+    }, {
         path: '/userManagement',
         component: UserManagement,
+    }, {
+        path: '/equipmentManagement',
+        component: EquipmentManagement,
+    }, {
+        path: '/companyConfiguration',
+        component: CompanyConfiguration,
     }, {
         path: '/blank',
         component: Blank,
