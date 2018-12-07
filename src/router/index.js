@@ -9,6 +9,9 @@ import AuthorityManagement from '@/view/authority-management/authorityManagement
 import UserManagement from '@/view/user-management/userManagement'
 import EquipmentManagement from '@/view/equipment-management/equipmentManagement'
 import CompanyConfiguration from '@/view/company-configuration/companyConfiguration'
+import InternalAddressBook from '@/view/internal-address-book/internalAddressBook'
+import VisitorStatistics from '@/view/visitor-statistics/visitorStatistics'
+import VisitorRecord from '@/view/visitor-record/visitorRecord'
 import Blank from '@/view/blank/blank'
 
 Vue.use(VueRouter)
@@ -35,6 +38,15 @@ const routes = [{
     }, {
         path: '/companyConfiguration',
         component: CompanyConfiguration,
+    }, {
+        path: '/internalAddressBook',
+        component: InternalAddressBook,
+    }, {
+        path: '/visitorStatistics',
+        component: VisitorStatistics,
+    }, {
+        path: '/visitorRecord',
+        component: VisitorRecord,
     }, {
         path: '/blank',
         component: Blank,

@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {};
 
 <style lang="stylus" scoped>
 #app
-    height 100%
-    min-width 1280px
-    min-height 720px
+  height 100%
+  min-width 1280px
+  min-height 720px
 </style>

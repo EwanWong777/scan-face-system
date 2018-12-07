@@ -70,7 +70,6 @@
       title="添加角色"
       :visible.sync="dialogAddRole"
       :append-to-body="true"
-      width="30%"
     >
       <el-form
         :model="addRoleForm"
@@ -99,7 +98,6 @@
       title="修改角色"
       :visible.sync="dialogEditRole"
       :append-to-body="true"
-      width="30%"
     >
       <el-form
         :model="editRoleForm"

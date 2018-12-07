@@ -99,7 +99,6 @@
       title="添加分组"
       :visible.sync="dialogAddGroup"
       :append-to-body="true"
-      width="30%"
     >
       <el-form
         :model="addGroupForm"
@@ -128,7 +127,6 @@
       title="修改分组"
       :visible.sync="dialogEditGroup"
       :append-to-body="true"
-      width="30%"
     >
       <el-form
         :model="editGroupForm"
@@ -157,7 +155,6 @@
       title="移动分组"
       :visible.sync="dialogRemoveGroup"
       :append-to-body="true"
-      width="30%"
     >
       <el-form
         :model="removeGroupForm"
