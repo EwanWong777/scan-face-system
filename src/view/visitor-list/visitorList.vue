@@ -22,7 +22,7 @@
       </div>
       <div class="m-table-body">
         <template>
-          <el-table :data="visitorRecord">
+          <el-table :data="visitorList">
             <el-table-column
               type="selection"
               width="50"
@@ -133,10 +133,10 @@
   </div>
 </template>
 <script>
-import { getVisitorRecord } from "@/api/visitorRecord";
+import { getVisitorList } from "@/api/visitorList";
 export default {
   created() {
-    this.getVisitorRecord();
+    this.getVisitorList();
   },
   data() {
     return {
@@ -144,7 +144,7 @@ export default {
         key: "",
         sex: ""
       },
-      visitorRecord: null,
+      visitorList: null,
       dialogViewPhotos: false,
       dialogEdit: false,
       editForm: {
@@ -154,10 +154,10 @@ export default {
     };
   },
   methods: {
-    getVisitorRecord() {
-      getVisitorRecord()
+    getVisitorList() {
+      getVisitorList()
         .then(res => {
-          this.visitorRecord = res.data.visitorRecord;
+          this.visitorList = res.data.visitorList;
         })
         .catch(err => {
           console.log(err);

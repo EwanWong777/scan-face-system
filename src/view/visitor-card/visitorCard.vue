@@ -1,5 +1,5 @@
 <template>
-  <div class="m-visitor-list">
+  <div class="m-visitor-card">
     <div class="m-table">
       <div class="m-table-header">
         <div class="m-table-header-left">
@@ -22,7 +22,7 @@
       </div>
       <div class="m-table-body">
         <template>
-          <el-table :data="visitorRecord">
+          <el-table :data="visitorCard">
             <el-table-column
               type="selection"
               width="50"
@@ -30,12 +30,34 @@
             </el-table-column>
             <el-table-column
               prop="name"
-              label="访客名单"
+              label="姓名"
             >
             </el-table-column>
             <el-table-column
-              prop="object"
-              label="来访对象"
+              prop="position"
+              label="职位"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="phoneNumber"
+              label="手机号"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="companyName"
+              label="公司名称"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="companyAddress"
+              label="公司地址"
+              :show-overflow-tooltip="true"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="contactAddress"
+              label="联系地址"
+              :show-overflow-tooltip="true"
             >
             </el-table-column>
             <el-table-column
@@ -45,7 +67,7 @@
             </el-table-column>
             <el-table-column
               label="操作"
-              width="180"
+              width="240"
             >
               <template slot-scope="scope">
                 <el-button
@@ -53,6 +75,11 @@
                   size="mini"
                   @click="handleViewPhotos"
                 >查看照片</el-button>
+                <el-button
+                  type="primary"
+                  size="mini"
+                  @click="handleViewPhotos"
+                >关联</el-button>
                 <el-button
                   type="primary"
                   size="mini"
@@ -106,15 +133,39 @@
         :model="editForm"
         label-width='100px'
       >
-        <el-form-item label="访客名单">
+        <el-form-item label="姓名">
           <el-input
             v-model="editForm.name"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="来访对象">
+        <el-form-item label="职位">
           <el-input
-            v-model="editForm.object"
+            v-model="editForm.position"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="手机号码">
+          <el-input
+            v-model="editForm.phoneNumber"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="公司名称">
+          <el-input
+            v-model="editForm.companyName"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="公司地址">
+          <el-input
+            v-model="editForm.companyAddress"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="联系地址">
+          <el-input
+            v-model="editForm.contactAddress"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -133,10 +184,10 @@
   </div>
 </template>
 <script>
-import { getVisitorRecord } from "@/api/visitorRecord";
+import { getVisitorCard } from "@/api/visitorCard";
 export default {
   created() {
-    this.getVisitorRecord();
+    this.getVisitorCard();
   },
   data() {
     return {
@@ -144,20 +195,24 @@ export default {
         key: "",
         sex: ""
       },
-      visitorRecord: null,
+      visitorCard: null,
       dialogViewPhotos: false,
       dialogEdit: false,
       editForm: {
         name: "",
-        object: "",
+        position: "",
+        phoneNumber: "",
+        companyName: "",
+        companyAddress: "",
+        contactAddress: ""
       }
     };
   },
   methods: {
-    getVisitorRecord() {
-      getVisitorRecord()
+    getVisitorCard() {
+      getVisitorCard()
         .then(res => {
-          this.visitorRecord = res.data.visitorRecord;
+          this.visitorCard = res.data.visitorCard;
         })
         .catch(err => {
           console.log(err);
@@ -175,7 +230,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../style/variables.styl'
-.m-visitor-list
+.m-visitor-card
   padding 20px
 .m-table
   background-color $white0

@@ -12,6 +12,9 @@ import CompanyConfiguration from '@/view/company-configuration/companyConfigurat
 import InternalAddressBook from '@/view/internal-address-book/internalAddressBook'
 import VisitorStatistics from '@/view/visitor-statistics/visitorStatistics'
 import VisitorRecord from '@/view/visitor-record/visitorRecord'
+import VisitorList from '@/view/visitor-list/visitorList'
+import VisitorCard from '@/view/visitor-card/visitorCard'
+import RealTimeSign from '@/view/real-time-sign/realTimeSign'
 import Blank from '@/view/blank/blank'
 
 Vue.use(VueRouter)
@@ -47,6 +50,15 @@ const routes = [{
     }, {
         path: '/visitorRecord',
         component: VisitorRecord,
+    }, {
+        path: '/visitorList',
+        component: VisitorList,
+    }, {
+        path: '/visitorCard',
+        component: VisitorCard,
+    }, {
+        path: '/realTimeSign',
+        component: RealTimeSign,
     }, {
         path: '/blank',
         component: Blank,

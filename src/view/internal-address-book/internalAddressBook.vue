@@ -1,5 +1,5 @@
 <template>
-  <div class="m-user-management">
+  <div class="m-internal-address-book">
     <div class="m-table">
       <div class="m-table-header">
         <div class="m-table-header-left">
@@ -357,7 +357,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../style/variables.styl'
-.m-user-management
+.m-internal-address-book
   padding 20px
 .m-table
   background-color $white0
