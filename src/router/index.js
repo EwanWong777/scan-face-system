@@ -15,6 +15,8 @@ import VisitorRecord from '@/view/visitor-record/visitorRecord'
 import VisitorList from '@/view/visitor-list/visitorList'
 import VisitorCard from '@/view/visitor-card/visitorCard'
 import RealTimeSign from '@/view/real-time-sign/realTimeSign'
+import SignStatistics from '@/view/sign-statistics/signStatistics'
+import AttendanceRecord from '@/view/attendance-record/attendanceRecord'
 import Blank from '@/view/blank/blank'
 
 Vue.use(VueRouter)
@@ -59,6 +61,12 @@ const routes = [{
     }, {
         path: '/realTimeSign',
         component: RealTimeSign,
+    }, {
+        path: '/signStatistics',
+        component: SignStatistics,
+    }, {
+        path: '/attendanceRecord',
+        component: AttendanceRecord,
     }, {
         path: '/blank',
         component: Blank,

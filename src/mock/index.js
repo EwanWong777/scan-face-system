@@ -9,6 +9,7 @@ import visitorStatistics from './visitorStatistics'
 import visitorRecord from './visitorRecord'
 import visitorList from './visitorList'
 import visitorCard from './visitorCard'
+import signStatistics from './signStatistics'
 
 Mock.mock('/login/loginByUserName', login.loginByUserName)
 Mock.mock('/login/getUserInfo', login.getUserInfo)
@@ -29,3 +30,5 @@ Mock.mock('/visitorRecord/getVisitorRecord', visitorRecord.getVisitorRecord)
 Mock.mock('/visitorList/getVisitorList', visitorList.getVisitorList)
 
 Mock.mock('/visitorCard/getVisitorCard', visitorCard.getVisitorCard)
+
+Mock.mock('/signStatistics/getLateList', signStatistics.getLateList)
