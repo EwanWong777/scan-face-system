@@ -1,5 +1,35 @@
 <template>
   <div class="m-attendance-record">
+    <div class="m-search-bar">
+      <el-form :inline="true">
+        <el-form-item>
+          <el-select
+            v-model="departmentSelect"
+            placeholder="请选择部门"
+          >
+            <el-option
+              v-for="(item,index) in department"
+              :key="index"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-date-picker
+            v-model="value1"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="default">查询</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
     <div class="m-table">
       <div class="m-table-header">
         <div class="m-table-header-left">
@@ -11,84 +41,64 @@
               ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-select
-                v-model="mTableSearch.sex"
-                placeholder="请选择性别"
-              >
-                <el-option
-                  label="男"
-                  value="1"
-                ></el-option>
-                <el-option
-                  label="女"
-                  value="2"
-                ></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item>
               <el-button type="default">查询</el-button>
             </el-form-item>
           </el-form>
         </div>
         <div class="m-table-header-right">
           <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
-          <el-button
-            type="primary"
-            @click="handleAdd"
-          >添加</el-button>
+          <el-button type="primary">一键导出</el-button>
           <el-button type="danger">删除</el-button>
         </div>
       </div>
       <div class="m-table-body">
         <template>
-          <el-table :data="userlist">
+          <el-table :data="recordlist">
             <el-table-column
               type="selection"
               width="50"
             >
             </el-table-column>
             <el-table-column
-              prop="avatar"
-              label="头像"
-              width="80"
-            >
-              <template slot-scope="scope">
-                <img
-                  :src="scope.row.avatar"
-                  alt=""
-                >
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="姓名"
+              prop="staffName"
+              label="员工姓名"
             >
             </el-table-column>
             <el-table-column
-              prop="phoneNumber"
-              label="手机号码"
+              prop="checkNumber"
+              label="考勤编号"
             >
             </el-table-column>
             <el-table-column
-              prop="email"
-              label="邮箱"
+              prop="department"
+              label="部门"
             >
             </el-table-column>
             <el-table-column
-              prop="registerTime"
-              label="注册时间"
+              prop="useRobot"
+              label="使用机器人"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="punchWay"
+              label="打卡方式"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="punchTime"
+              label="打卡时间"
             >
             </el-table-column>
             <el-table-column
               label="操作"
-              width="80"
+              width="100"
             >
               <template slot-scope="scope">
                 <el-button
                   type="primary"
                   size="mini"
-                  @click="handleEdit(scope.row)"
-                >编辑</el-button>
+                  @click="handleViewPhotos"
+                >查看照片</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -103,131 +113,75 @@
         </el-pagination>
       </div>
     </div>
+    <!-- 查看照片 -->
     <el-dialog
-      title="添加"
-      :visible.sync="dialogAdd"
+      title="查看照片"
+      :visible.sync="dialogViewPhotos"
       :append-to-body="true"
     >
-      <el-form
-        :model="addForm"
-        label-width='100px'
-      >
-        <el-form-item label="姓名">
-          <el-input
-            v-model="addForm.name"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="手机号">
-          <el-input
-            v-model="addForm.phoneNumber"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input
-            v-model="addForm.email"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-      </el-form>
-      <div
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button @click="dialogAdd = false">取 消</el-button>
-        <el-button
-          type="primary"
-          @click="dialogAdd = false"
-        >确 定</el-button>
+      <div class="m-member-photos">
+        <img src="@/assets/demo1.jpg">
       </div>
-    </el-dialog>
-    <el-dialog
-      title="编辑"
-      :visible.sync="dialogEdit"
-      :append-to-body="true"
-    >
-      <el-form
-        :model="editForm"
-        label-width='100px'
-      >
-        <el-form-item label="姓名">
-          <el-input
-            v-model="editForm.name"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="手机号">
-          <el-input
-            v-model="editForm.phoneNumber"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input
-            v-model="editForm.email"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-      </el-form>
       <div
         slot="footer"
         class="dialog-footer"
       >
-        <el-button @click="dialogEdit = false">取 消</el-button>
+        <el-button @click="dialogViewPhotos = false">取 消</el-button>
         <el-button
           type="primary"
-          @click="dialogEdit = false"
+          @click="dialogViewPhotos = false"
         >确 定</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 <script>
-import { getUserList } from "@/api/userManagement";
+import { getRecordList } from "@/api/attendanceRecord";
 export default {
   created() {
-    this.getUserList();
+    this.getRecordList();
   },
   data() {
     return {
+      departmentSelect: "研发中心",
+      department: [
+        {
+          value: 0,
+          label: "研发中心"
+        },
+        {
+          value: 1,
+          label: "行政部"
+        },
+        {
+          value: 2,
+          label: "财务部"
+        }
+      ],
+      value1: "",
       mTableSearch: {
         key: "",
         sex: ""
       },
-      userlist: null,
-      dialogAdd: false,
-      addForm: {
-          avatar: "",
-        name: "",
-        phoneNumber: "",
-        email: ""
-      },
-      dialogEdit: false,
-      editForm: {
-        avatar: "",
-        name: "",
-        phoneNumber: "",
-        email: ""
-      }
+      dialogViewPhotos: false,
+      recordlist: null,
     };
   },
+  mounted() {
+    this.value1 = [new Date().setMonth(new Date().getMonth() - 1), new Date()];
+  },
   methods: {
-    getUserList() {
-      getUserList()
+    getRecordList() {
+      getRecordList()
         .then(res => {
-          this.userlist = res.data.userlist;
+          this.recordlist = res.data.recordlist;
         })
         .catch(err => {
           console.log(err);
         });
     },
-    handleAdd() {
-      this.dialogAdd = true;
-    },
-    handleEdit(row) {
-      this.dialogEdit = true;
-      this.editForm = Object.assign({}, row);
+    handleViewPhotos() {
+      this.dialogViewPhotos = true;
     }
   }
 };
@@ -236,6 +190,13 @@ export default {
 @import '../../style/variables.styl'
 .m-attendance-record
   padding 20px
+.m-search-bar
+  padding 20px
+  background-color $white0
+  margin-bottom 20px
+  display flex
+  justify-content center
+  line-height 40px
 .m-table
   background-color $white0
   padding 20px
@@ -254,4 +215,8 @@ export default {
 .m-table-footer
   display flex
   justify-content flex-end
+.m-member-photos
+  img
+    width 100%
+    margin-bottom 20px
 </style>

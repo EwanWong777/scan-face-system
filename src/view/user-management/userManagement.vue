@@ -11,21 +11,6 @@
               ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-select
-                v-model="mTableSearch.sex"
-                placeholder="请选择性别"
-              >
-                <el-option
-                  label="男"
-                  value="1"
-                ></el-option>
-                <el-option
-                  label="女"
-                  value="2"
-                ></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item>
               <el-button type="default">查询</el-button>
             </el-form-item>
           </el-form>
@@ -198,7 +183,7 @@ export default {
       userlist: null,
       dialogAdd: false,
       addForm: {
-          avatar: "",
+        avatar: "",
         name: "",
         phoneNumber: "",
         email: ""

@@ -1,6 +1,7 @@
 import Mock from 'mockjs'
 
 import login from './login'
+import layout from './layout'
 import userManagement from './userManagement'
 import equipmentData from './equipmentData'
 import companyConfiguration from './companyConfiguration'
@@ -10,10 +11,13 @@ import visitorRecord from './visitorRecord'
 import visitorList from './visitorList'
 import visitorCard from './visitorCard'
 import signStatistics from './signStatistics'
+import attendanceRecord from './attendanceRecord'
 
 Mock.mock('/login/loginByUserName', login.loginByUserName)
 Mock.mock('/login/getUserInfo', login.getUserInfo)
 Mock.mock('/login/logout', login.logout)
+
+Mock.mock('/layout/getCompanyList', layout.getCompanyList)
 
 Mock.mock('/userManagement/getUserList', userManagement.getUserList)
 
@@ -32,3 +36,7 @@ Mock.mock('/visitorList/getVisitorList', visitorList.getVisitorList)
 Mock.mock('/visitorCard/getVisitorCard', visitorCard.getVisitorCard)
 
 Mock.mock('/signStatistics/getLateList', signStatistics.getLateList)
+Mock.mock('/signStatistics/getWorkingList', signStatistics.getWorkingList)
+Mock.mock('/signStatistics/getEarlyList', signStatistics.getEarlyList)
+
+Mock.mock('/attendanceRecord/getRecordList', attendanceRecord.getRecordList)

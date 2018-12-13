@@ -139,7 +139,6 @@ export default {
     };
   },
   methods: {
-    // 获取排行榜
     getRankingList() {
       getRankingList()
         .then(res => {

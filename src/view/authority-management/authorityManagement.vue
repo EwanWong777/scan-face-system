@@ -5,6 +5,8 @@
         class="m-role-list"
         v-for="(item,index) in roleList"
         :key="index"
+        :class="{'active':index==activeRole}"
+        @click="handleChangeRole(index)"
       >
         <div class="m-role-item">
           <div class="m-role-item-left">
@@ -19,14 +21,14 @@
               icon="el-icon-edit"
               size="mini"
               circle
-              @click="handleEditRole(item.name)"
+              @click.stop="handleEditRole(item.name)"
             ></el-button>
             <el-button
               type="danger"
               icon="el-icon-delete"
               size="mini"
               circle
-              @click="handleDeleteRole(index)"
+              @click.stop="handleDeleteRole(index)"
             ></el-button>
           </div>
         </div>
@@ -127,6 +129,7 @@
 export default {
   data() {
     return {
+      activeRole: 0,
       roleList: [
         {
           name: "普通用户",
@@ -233,6 +236,9 @@ export default {
     },
     handleDeleteRole(index) {
       this.roleList.splice(index, 1);
+    },
+    handleChangeRole(index) {
+      this.activeRole = index;
     }
   }
 };
@@ -247,6 +253,9 @@ export default {
   width 256px
   background-color $white0
   margin-right 20px
+  .active
+    background-color $base1
+    color $base5
 .m-role-list
   cursor pointer
 .m-role-item
@@ -254,6 +263,7 @@ export default {
   display flex
   &:hover
     background-color $base1
+    color $base5
 .m-role-item
   &:hover .m-role-item-right
     display block

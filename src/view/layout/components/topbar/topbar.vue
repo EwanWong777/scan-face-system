@@ -9,6 +9,26 @@
       </div>
     </div>
     <div class="m-topbar-right">
+      <div class="m-view">
+        <div class="m-view-link">
+          <div class="m-view-link-text">
+            {{$t('layout.view')}}
+          </div>
+          <div class="m-view-link-arrow">
+            <i class="el-icon-arrow-down"></i>
+          </div>
+        </div>
+        <div class="m-view-panel-box">
+          <div class="m-view-panel">
+            <ul class="m-view-list">
+              <li
+                v-for="(item,index) in companylist"
+                :key="index"
+              >{{item.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="m-language">
         <div class="m-language-link">
           <div class="m-language-link-text">
@@ -62,12 +82,30 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { getCompanyList } from "@/api/layout";
 export default {
+  created() {
+    this.getCompanyList();
+  },
+  data() {
+    return {
+      companylist: null
+    };
+  },
   computed: {
     ...mapGetters(["language", "name", "avatar"])
   },
   methods: {
     ...mapActions(["toggleSidebar", "setLanguage", "logout"]),
+    getCompanyList() {
+      getCompanyList()
+        .then(res => {
+          this.companylist = res.data.companylist;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     handleSetLanguage: function(language) {
       this.setLanguage(language);
       this.$i18n.locale = language;
@@ -104,6 +142,45 @@ export default {
   border-right 1px solid $border0
   line-height 48px
   cursor pointer
+// 视角
+.m-view
+  position relative
+  border-left 1px solid $border0
+  cursor pointer
+  &:hover .m-view-panel
+    max-height 1000px
+    transition all 0.2s
+  &:hover .m-view-link-arrow
+    transform rotate(-180deg)
+    transition all 0.2s
+.m-view-link
+  padding 0 20px
+  line-height 48px
+  display flex
+.m-view-link-arrow
+  margin-left 10px
+  transition all 0.2s
+.m-view-panel-box
+  position absolute
+  top 48px
+  right 0
+  padding-top 10px
+.m-view-panel
+  color $white0
+  background-color $base5
+  max-height 0
+  transition all 0.2s
+  overflow hidden
+  box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+.m-view-list
+  li
+    line-height 48px
+    padding 0 20px
+    text-align center
+    white-space nowrap
+    &:hover
+      color $white0
+      background-color $base6
 // 语言
 .m-language
   position relative

@@ -14,6 +14,8 @@ export default {
     layout: {
         // 网页标题
         title: '刷脸系统',
+        // 视角
+        view: '选择视角',
         // 网页语言
         language: '简体中文',
         // 导航

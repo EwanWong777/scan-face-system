@@ -11,9 +11,9 @@ for (let i = 0; i < 10; i++) {
             "老板",
         ]),
         phoneNumber: /^1[34578]\d{9}$/,
-        companyName: '@csentence(3, 5)',
-        companyAddress: '@county(true) @csentence(3, 5)',
-        contactAddress: '@county(true) @csentence(3, 5)',
+        companyName: '@cword(3, 5)' + '公司',
+        companyAddress: '@county(true) @cword(5, 20)',
+        contactAddress: '@county(true) @cword(5, 20)',
         photo: /[0-9]/,
     }))
 }

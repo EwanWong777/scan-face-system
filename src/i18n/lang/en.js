@@ -14,6 +14,8 @@ export default {
     layout: {
         // 网页标题
         title: "BRUSH FACE SYSTEM",
+        // 视角
+        view: 'CHOOSE VIEW',
         // 网页语言
         language: "ENGLISH",
         // 导航

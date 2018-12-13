@@ -6,49 +6,45 @@
         <el-radio-button label="staff">员工</el-radio-button>
       </el-radio-group>
     </div>
+    <!-- 时间 -->
     <div v-show="mSignRadio === 'time'">
       <div class="m-search-bar">上班时间：<a href="javascript:;">8:00 ~ 10:00</a></div>
+      <!-- 昨日打卡统计 -->
       <div class="m-chart">
         <div class="m-chart-header">
           <div class="m-chart-header-left">
             <div class="m-chart-title">
-              {{$t('home.pieChart')}}
+              昨日打卡统计
             </div>
           </div>
           <div class="m-chart-header-right">
-            <div class="m-chart-form">
-              <el-date-picker
-                v-model="value1"
-                type="date"
-                placeholder="选择日期"
-              ></el-date-picker>
-            </div>
+            <a href="javascript:;">查看详情</a>
           </div>
         </div>
         <div class="m-chart-body">
-          <div class="m-check-chart">
-            <div class="m-check-chart-left">
+          <div class="m-yesterday-chart">
+            <div class="m-yesterday-chart-left">
               <div
                 ref="mPieChart"
                 class="m-pie-chart"
               ></div>
             </div>
-            <div class="m-check-chart-right">
+            <div class="m-yesterday-chart-right">
               <el-row :gutter="20">
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>迟到</h4>
                     <h1>4</h1>
                   </div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>早退</h4>
                     <h1>0</h1>
                   </div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>手动打卡</h4>
                     <h1>4</h1>
                   </div>
@@ -56,19 +52,19 @@
               </el-row>
               <el-row :gutter="20">
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>上班未打卡</h4>
                     <h1>4</h1>
                   </div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>下班未打卡</h4>
                     <h1>0</h1>
                   </div>
                 </el-col>
                 <el-col :span="8">
-                  <div class="m-check-chart-text">
+                  <div class="m-yesterday-chart-text">
                     <h4>旷工</h4>
                     <h1>4</h1>
                   </div>
@@ -78,11 +74,96 @@
           </div>
         </div>
       </div>
+      <el-row :gutter="20">
+        <el-col :span="14">
+          <!-- 本周打卡统计 -->
+          <div class="m-chart">
+            <div class="m-chart-header">
+              <div class="m-chart-header-left">
+                <div class="m-chart-title">
+                  本周打卡统计
+                </div>
+              </div>
+              <div class="m-chart-header-right">
+                <a href="javascript:;">查看详情</a>
+              </div>
+            </div>
+            <div class="m-chart-body">
+              <div class="m-week-chart">
+                <div class="m-week-chart-left">
+                  <h1>正常打卡率</h1>
+                  <h1>80%</h1>
+                </div>
+                <div class="m-week-chart-right">
+                  <el-row :gutter="20">
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>迟到</h4>
+                        <h1>4</h1>
+                      </div>
+                    </el-col>
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>早退</h4>
+                        <h1>0</h1>
+                      </div>
+                    </el-col>
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>手动打卡</h4>
+                        <h1>4</h1>
+                      </div>
+                    </el-col>
+                  </el-row>
+                  <el-row :gutter="20">
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>上班未打卡</h4>
+                        <h1>4</h1>
+                      </div>
+                    </el-col>
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>下班未打卡</h4>
+                        <h1>0</h1>
+                      </div>
+                    </el-col>
+                    <el-col :span="8">
+                      <div class="m-week-chart-text">
+                        <h4>旷工</h4>
+                        <h1>4</h1>
+                      </div>
+                    </el-col>
+                  </el-row>
+                </div>
+              </div>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="10">
+          <div class="m-chart">
+            <div class="m-chart-header">
+              <div class="m-chart-header-left">
+                <div class="m-chart-title">
+                  本月异常考勤统计
+                </div>
+              </div>
+            </div>
+            <div class="m-chart-body">
+              <div
+                ref="mBarChart"
+                class="m-bar-chart"
+              ></div>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
     </div>
+    <!-- 员工 -->
     <div v-show="mSignRadio === 'staff'">
       <div class="m-search-bar">
         <el-date-picker
-          v-model="value2"
+          v-model="value1"
           type="month"
           placeholder="选择月"
         >
@@ -134,7 +215,7 @@
               </div>
             </div>
             <div class="m-chart-body">
-              <el-table :data="latelist">
+              <el-table :data="workinglist">
                 <el-table-column
                   type="index"
                   label="排名"
@@ -169,7 +250,7 @@
               </div>
             </div>
             <div class="m-chart-body">
-              <el-table :data="latelist">
+              <el-table :data="earlylist">
                 <el-table-column
                   type="index"
                   label="排名"
@@ -199,25 +280,30 @@
   </div>
 </template>
 <script>
-import { getLateList } from "@/api/signStatistics";
+import {
+  getLateList,
+  getWorkingList,
+  getEarlyList
+} from "@/api/signStatistics";
 export default {
   created() {
     this.getLateList();
+    this.getWorkingList();
+    this.getEarlyList();
   },
   data() {
     return {
       mSignRadio: "time",
       latelist: null,
-      date: "",
-      value1: "",
-      value2: ""
+      workinglist: null,
+      earlylist: null,
+      value1: ""
     };
   },
   mounted() {
-    this.date = this.initDate(new Date());
     this.initPieChart();
+    this.initBarChart();
     this.value1 = new Date();
-    this.value2 = new Date();
   },
   methods: {
     getLateList() {
@@ -229,14 +315,23 @@ export default {
           console.log(err);
         });
     },
-    // 格式化时间
-    initDate(date) {
-      var y = date.getFullYear();
-      var m = date.getMonth() + 1;
-      m = m < 10 ? "0" + m : m;
-      var d = date.getDate();
-      d = d < 10 ? "0" + d : d;
-      return y + "-" + m + "-" + d;
+    getWorkingList() {
+      getWorkingList()
+        .then(res => {
+          this.workinglist = res.data.workinglist;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getEarlyList() {
+      getEarlyList()
+        .then(res => {
+          this.earlylist = res.data.earlylist;
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     // 饼图
     initPieChart() {
@@ -281,6 +376,43 @@ export default {
         ]
       };
       mPieChart.setOption(option);
+    },
+    // 柱状图
+    initBarChart() {
+      let mBarChart = this.$echarts.init(this.$refs.mBarChart);
+      let option = {
+        legend: {
+          data: ["人数", "次数"]
+        },
+        xAxis: {
+          data: ["迟到", "早退", "上班未打卡", "下班未打卡", "旷工", "手动打卡"]
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "人数",
+            type: "bar",
+            data: [5, 20, 36, 10, 10, 20],
+            smooth: true
+          },
+          {
+            name: "次数",
+            type: "bar",
+            data: [10, 20, 30, 15, 10, 18],
+            smooth: true
+          }
+        ],
+        color: [
+          "#F44336",
+          "#FF9800",
+          "#FFEB3B",
+          "#4CAF50",
+          "#00BCD4",
+          "#2196F3",
+          "#9C27B0"
+        ]
+      };
+      mBarChart.setOption(option);
     }
   }
 };
@@ -340,14 +472,33 @@ export default {
   flex 1
   display flex
   justify-content flex-end
-.m-check-chart
+.m-yesterday-chart
   display flex
-.m-check-chart-left
+.m-yesterday-chart-left
   width 480px
-.m-check-chart-right
+.m-yesterday-chart-right
   flex 1
-.m-check-chart-text
+.m-yesterday-chart-text
   padding 40px 0
+  text-align center
+  h4
+    margin-bottom 20px
+    color $font2
+.m-week-chart
+  display flex
+.m-week-chart-left
+  width 300px
+  text-align center
+  padding 40px 0
+  h1
+    &:first-child
+      margin-bottom 40px
+    &:last-child
+      font-size 72px
+.m-week-chart-right
+  flex 1
+.m-week-chart-text
+  padding 20px 0
   text-align center
   h4
     margin-bottom 20px
@@ -358,4 +509,6 @@ export default {
   margin-bottom 20px
 .m-pie-chart
   height 320px
+.m-bar-chart
+  height 240px
 </style>

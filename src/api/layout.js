@@ -1,8 +1,8 @@
 import request from '@/util/request'
 
-export function getRecordList() {
+export function getCompanyList() {
     return request({
-        url: '/attendanceRecord/getRecordList',
+        url: '/layout/getCompanyList',
         method: 'post'
     })
 }
