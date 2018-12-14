@@ -6,6 +6,8 @@
         class="m-group-list"
         v-for="(item,index) in groupList"
         :key="index"
+        :class="{'active':index==activeGroup}"
+        @click="handleChangeGroup(index)"
       >
         <div class="m-group-item">
           <div class="m-group-item-left">
@@ -201,6 +203,7 @@ export default {
         sex: ""
       },
       equipmentData: null,
+      activeGroup: 0,
       groupList: [
         {
           name: "未分组",
@@ -259,6 +262,9 @@ export default {
     },
     handleRemoveGroup() {
       this.dialogRemoveGroup = true;
+    },
+    handleChangeGroup(index) {
+      this.activeGroup = index;
     }
   }
 };
@@ -273,6 +279,9 @@ export default {
   width 256px
   background-color $white0
   margin-right 20px
+  .active
+    background-color $base1
+    color $base5
 .m-group-list
   cursor pointer
 .m-group-item
@@ -280,6 +289,7 @@ export default {
   display flex
   &:hover
     background-color $base1
+    color $base5
 .m-group-item
   &:hover .m-group-item-right
     display block
