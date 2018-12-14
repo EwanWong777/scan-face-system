@@ -32,7 +32,7 @@
           <el-form-item :class="errorBags.has('password')?'is-error':''">
             <el-input
               type="password"
-              v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{8,17}$/ }"
+              v-validate="{ required: true, regex: /^[a-zA-Z0-9_.@~!?]{6,17}$/ }"
               :data-vv-as="$t('login.password')"
               v-model="loginForm.password"
               name="password"
