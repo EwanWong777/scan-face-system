@@ -42,7 +42,10 @@
     </div>
     <div class="m-auth">
       <div class="m-auth-header">
-        <el-button type="primary">保存修改</el-button>
+        <el-button
+          type="primary"
+          :disabled="saveBtn"
+        >保存修改</el-button>
       </div>
       <div
         class="m-auth-first"
@@ -223,8 +226,22 @@ export default {
           label: "考勤记录",
           check: false
         }
-      ]
+      ],
+      saveBtn: true
     };
+  },
+  watch: {
+    newAuthTable: {
+      handler(val, oldVal) {
+        this.saveBtn = false;
+      },
+      deep: true
+    }
+  },
+  computed: {
+    newAuthTable() {
+      return this.authTable;
+    }
   },
   methods: {
     handleAddRole() {
