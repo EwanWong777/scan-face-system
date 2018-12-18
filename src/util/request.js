@@ -4,8 +4,10 @@ import {
     getToken
 } from '@/util/auth'
 
+const baseUrl = process.env.NODE_ENV === 'production' ? '/' : '/'
+
 const service = axios.create({
-    baseURL: process.env.BASE_API,
+    baseURL: baseUrl,
     timeout: 1000,
     headers: {}
 });
