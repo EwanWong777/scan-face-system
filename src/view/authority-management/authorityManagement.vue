@@ -231,16 +231,11 @@ export default {
     };
   },
   watch: {
-    newAuthTable: {
+    authTable: {
       handler(val, oldVal) {
         this.saveBtn = false;
       },
       deep: true
-    }
-  },
-  computed: {
-    newAuthTable() {
-      return this.authTable;
     }
   },
   methods: {
