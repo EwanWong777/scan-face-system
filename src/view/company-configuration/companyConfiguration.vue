@@ -32,28 +32,23 @@
             >
             </el-table-column>
             <el-table-column
-              prop="dictionaries"
-              label="字典"
+              prop="status"
+              label="激活状态"
             >
             </el-table-column>
             <el-table-column
-              prop="noise"
-              label="噪声"
+              prop="visitor"
+              label="访客人数阈值"
             >
             </el-table-column>
             <el-table-column
-              prop="semantic"
-              label="语义"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="meaning"
-              label="词义阈值"
+              prop="facegrade"
+              label="人脸匹配分数阈值"
             >
             </el-table-column>
             <el-table-column
               label="操作"
-              width="80"
+              width="180"
             >
               <template slot-scope="scope">
                 <el-button
@@ -61,6 +56,11 @@
                   size="mini"
                   @click="handleEdit(scope.row)"
                 >编辑</el-button>
+                <el-button
+                  type="primary"
+                  size="mini"
+                  @click="handleHighEdit"
+                >高级配置</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -83,29 +83,159 @@
     >
       <el-form
         :model="editForm"
-        label-width='100px'
+        label-width='240px'
       >
-        <el-form-item label="字典">
+        <el-form-item label="公司名称">
           <el-input
-            v-model="editForm.dictionaries"
+            v-model="editForm.name"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="噪声">
+        <el-form-item label="激活状态">
           <el-input
-            v-model="editForm.noise"
+            v-model="editForm.status"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="语义">
+        <el-form-item label="访客人数阈值">
           <el-input
-            v-model="editForm.semantic"
+            v-model="editForm.visitor"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="词义阈值">
+        <el-form-item label="人脸匹配分数阈值">
           <el-input
-            v-model="editForm.meaning"
+            v-model="editForm.facegrade"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogEdit = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="dialogEdit = false"
+        >确 定</el-button>
+      </div>
+    </el-dialog>
+    <!-- 高级配置 -->
+    <el-dialog
+      title="高级配置"
+      :visible.sync="dialogHighEdit"
+      :append-to-body="true"
+    >
+      <el-form
+        :model="highEditForm"
+        label-width='240px'
+      >
+        <el-form-item label="人脸坐标X轴最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标X轴最大值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标Y轴最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸面积最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸置信度阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸上下翻转角度(pitch)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸左右翻转角度(yaw)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸平面内旋转角度(roll)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸识别参数配置">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标X轴最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标X轴最大值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标Y轴最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸坐标Y轴最大值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸面积最小值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸置信度阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸上下翻转角度(pitch)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸左右翻转角度(yaw)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="人脸平面内旋转角度(roll)阈值">
+          <el-input
+            v-model="highEditForm.meaning"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -142,6 +272,13 @@ export default {
         noise: "",
         semantic: "",
         meaning: ""
+      },
+      dialogHighEdit: false,
+      highEditForm: {
+        dictionaries: "",
+        noise: "",
+        semantic: "",
+        meaning: ""
       }
     };
   },
@@ -161,6 +298,9 @@ export default {
     handleEdit(row) {
       this.dialogEdit = true;
       this.editForm = Object.assign({}, row);
+    },
+    handleHighEdit() {
+      this.dialogHighEdit = true;
     }
   }
 };
