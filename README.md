@@ -1,4 +1,4 @@
-# brush-face-system
+# scan-face-system
 
 ## Project setup
 ```

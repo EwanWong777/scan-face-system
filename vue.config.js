@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production' ? '/brush-face-system/' : '/',
+    baseUrl: process.env.NODE_ENV === 'production' ? '/scan-face-system/' : '/',
     // 跨域
     devServer: {
         proxy: {
