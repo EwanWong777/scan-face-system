@@ -58,22 +58,15 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
           <el-button
             type="primary"
             @click="handleRemoveGroup"
           >移动分组</el-button>
-          <el-button type="danger">删除</el-button>
         </div>
       </div>
       <div class="m-table-body">
         <template>
           <el-table :data="equipmentData">
-            <el-table-column
-              type="selection"
-              width="50"
-            >
-            </el-table-column>
             <el-table-column
               prop="eid"
               label="设备ID"
@@ -83,6 +76,18 @@
               prop="name"
               label="设备名称"
             >
+            </el-table-column>
+            <el-table-column
+              label="操作"
+              width="80"
+            >
+              <template slot-scope="scope">
+                <el-button
+                  type="primary"
+                  size="mini"
+                  @click="handleEdit(scope.row)"
+                >编辑</el-button>
+              </template>
             </el-table-column>
           </el-table>
         </template>
@@ -188,6 +193,34 @@
         >确 定</el-button>
       </div>
     </el-dialog>
+    <!-- 编辑 -->
+    <el-dialog
+      title="编辑"
+      :visible.sync="dialogEdit"
+      :append-to-body="true"
+    >
+      <el-form
+        :model="editForm"
+        label-width='100px'
+      >
+        <el-form-item label="设备名称">
+          <el-input
+            v-model="editForm.name"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogEdit = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="dialogEdit = false"
+        >确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -198,11 +231,6 @@ export default {
   },
   data() {
     return {
-      mTableSearch: {
-        key: "",
-        sex: ""
-      },
-      equipmentData: null,
       activeGroup: 0,
       groupList: [
         {
@@ -222,6 +250,11 @@ export default {
           cantOperation: true
         }
       ],
+      mTableSearch: {
+        key: "",
+        sex: ""
+      },
+      equipmentData: null,
       dialogAddGroup: false,
       addGroupForm: {
         name: ""
@@ -232,6 +265,10 @@ export default {
       },
       dialogRemoveGroup: false,
       removeGroupForm: {
+        name: ""
+      },
+      dialogEdit: false,
+      editForm: {
         name: ""
       }
     };
@@ -265,6 +302,10 @@ export default {
     },
     handleChangeGroup(index) {
       this.activeGroup = index;
+    },
+    handleEdit(row) {
+      this.dialogEdit = true;
+      this.editForm = Object.assign({}, row);
     }
   }
 };

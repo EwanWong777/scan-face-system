@@ -52,21 +52,25 @@
             </div>
           </div>
           <div class="m-chart-body">
-            <el-table :data="rankingList">
-              <el-table-column
-                type="index"
-                label="排名"
-                width="80"
-              >
-              </el-table-column>
+            <el-table :data="dynamicList">
               <el-table-column
                 prop="name"
-                label="客户名称"
+                label="员工姓名"
               >
               </el-table-column>
               <el-table-column
-                prop="count"
-                label="来访次数"
+                prop="department"
+                label="部门"
+              >
+              </el-table-column>
+              <el-table-column
+                prop="work"
+                label="上班打卡"
+              >
+              </el-table-column>
+              <el-table-column
+                prop="afterwork"
+                label="下班打卡"
               >
               </el-table-column>
             </el-table>
@@ -91,21 +95,15 @@
             </div>
           </div>
           <div class="m-chart-body">
-            <el-table :data="rankingList">
-              <el-table-column
-                type="index"
-                label="排名"
-                width="80"
-              >
-              </el-table-column>
+            <el-table :data="signList">
               <el-table-column
                 prop="name"
                 label="客户名称"
               >
               </el-table-column>
               <el-table-column
-                prop="count"
-                label="来访次数"
+                prop="time"
+                label="打卡时间"
               >
               </el-table-column>
             </el-table>
@@ -124,10 +122,11 @@
   </div>
 </template>
 <script>
-import { getRankingList } from "@/api/visitorStatistics";
+import { getDynamicList, getSignList } from "@/api/realTimeSign";
 export default {
   created() {
-    this.getRankingList();
+    this.getDynamicList();
+    this.getSignList();
   },
   data() {
     return {
@@ -135,14 +134,24 @@ export default {
         key: "",
         sex: ""
       },
-      rankingList: null
+      dynamicList: null,
+      signList: null
     };
   },
   methods: {
-    getRankingList() {
-      getRankingList()
+    getDynamicList() {
+      getDynamicList()
         .then(res => {
-          this.rankingList = res.data.rankingList;
+          this.dynamicList = res.data.dynamicList;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getSignList() {
+      getSignList()
+        .then(res => {
+          this.signList = res.data.signList;
         })
         .catch(err => {
           console.log(err);

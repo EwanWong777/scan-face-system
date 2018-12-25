@@ -9,8 +9,8 @@ import internalAddressBook from './internalAddressBook'
 import visitorStatistics from './visitorStatistics'
 import visitorRecord from './visitorRecord'
 import visitorList from './visitorList'
-import visitorCard from './visitorCard'
 import signStatistics from './signStatistics'
+import realTimeSign from './realTimeSign'
 import attendanceRecord from './attendanceRecord'
 
 Mock.mock('/login/loginByUserName', login.loginByUserName)
@@ -33,7 +33,8 @@ Mock.mock('/visitorRecord/getVisitorRecord', visitorRecord.getVisitorRecord)
 
 Mock.mock('/visitorList/getVisitorList', visitorList.getVisitorList)
 
-Mock.mock('/visitorCard/getVisitorCard', visitorCard.getVisitorCard)
+Mock.mock('/realTimeSign/getDynamicList', realTimeSign.getDynamicList)
+Mock.mock('/realTimeSign/getSignList', realTimeSign.getSignList)
 
 Mock.mock('/signStatistics/getLateList', signStatistics.getLateList)
 Mock.mock('/signStatistics/getWorkingList', signStatistics.getWorkingList)

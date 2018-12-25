@@ -1,17 +1,43 @@
 import Mock from 'mockjs'
 
-let rankingList = []
+let dynamicList = []
 for (let i = 0; i < 10; i++) {
-    rankingList.push(Mock.mock({
+    dynamicList.push(Mock.mock({
         name: '@cname',
-        count: /\d{5}/,
+        department: Mock.Random.pick([
+            "研发中心",
+            "业务部",
+            "财务部",
+            "行政部",
+        ]),
+        work: Mock.Random.pick([
+            "打卡",
+            "未打卡"
+        ]),
+        afterwork: Mock.Random.pick([
+            "打卡",
+            "未打卡"
+        ])
+    }))
+}
+
+let signList = []
+for (let i = 0; i < 10; i++) {
+    signList.push(Mock.mock({
+        name: "@cname",
+        time: "@time",
     }))
 }
 
 export default {
-    getRankingList: () => {
+    getDynamicList: () => {
         return {
-            rankingList
+            dynamicList
+        }
+    },
+    getSignList: () => {
+        return {
+            signList
         }
     }
 }

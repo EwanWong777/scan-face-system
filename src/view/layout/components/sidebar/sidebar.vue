@@ -91,14 +91,14 @@ export default {
           path: "/userManagement"
         },
         {
-          name: this.$t("layout.equipmentManagement"),
-          icon: "fas fa-coins",
-          path: "/equipmentManagement"
-        },
-        {
           name: this.$t("layout.companyConfiguration"),
           icon: "fas fa-archway",
           path: "/companyConfiguration"
+        },
+        {
+          name: this.$t("layout.equipmentManagement"),
+          icon: "fas fa-coins",
+          path: "/equipmentManagement"
         },
         {
           name: this.$t("layout.internalAddressBook"),
@@ -120,10 +120,6 @@ export default {
             {
               name: this.$t("layout.visitorList"),
               path: "/visitorList"
-            },
-            {
-              name: this.$t("layout.visitorCard"),
-              path: "/visitorCard"
             }
           ]
         },

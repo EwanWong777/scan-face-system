@@ -16,7 +16,6 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
           <el-button
             type="primary"
             @click="handleAdd"
@@ -33,20 +32,8 @@
             >
             </el-table-column>
             <el-table-column
-              prop="avatar"
-              label="头像"
-              width="80"
-            >
-              <template slot-scope="scope">
-                <img
-                  :src="scope.row.avatar"
-                  alt=""
-                >
-              </template>
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="姓名"
+              prop="account"
+              label="Q-link账号"
             >
             </el-table-column>
             <el-table-column
@@ -55,13 +42,13 @@
             >
             </el-table-column>
             <el-table-column
-              prop="email"
-              label="邮箱"
+              prop="registerTime"
+              label="上次登录时间"
             >
             </el-table-column>
             <el-table-column
-              prop="registerTime"
-              label="注册时间"
+              prop="role"
+              label="角色"
             >
             </el-table-column>
             <el-table-column
@@ -97,23 +84,25 @@
         :model="addForm"
         label-width='100px'
       >
-        <el-form-item label="姓名">
+        <el-form-item label="Q-link账号">
           <el-input
-            v-model="addForm.name"
+            v-model="addForm.account"
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="手机号">
-          <el-input
-            v-model="addForm.phoneNumber"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input
-            v-model="addForm.email"
-            autocomplete="off"
-          ></el-input>
+        <el-form-item label="角色">
+          <el-select
+            class="m-el-select"
+            v-model="addForm.role"
+            placeholder="请选择角色"
+          >
+            <el-option
+              v-for="(item,index) in rolelist"
+              :key="index"
+              :label="item.name"
+              :value="index"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div
@@ -136,23 +125,18 @@
         :model="editForm"
         label-width='100px'
       >
-        <el-form-item label="姓名">
-          <el-input
-            v-model="editForm.name"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="手机号">
-          <el-input
-            v-model="editForm.phoneNumber"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱">
-          <el-input
-            v-model="editForm.email"
-            autocomplete="off"
-          ></el-input>
+        <el-form-item label="角色">
+          <el-select
+            class="m-el-select"
+            v-model="editForm.role"
+          >
+            <el-option
+              v-for="(item,index) in rolelist"
+              :key="index"
+              :label="item.name"
+              :value="index"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div
@@ -183,18 +167,31 @@ export default {
       userlist: null,
       dialogAdd: false,
       addForm: {
-        avatar: "",
-        name: "",
-        phoneNumber: "",
-        email: ""
+        account: "",
+        role: ""
       },
       dialogEdit: false,
       editForm: {
-        avatar: "",
-        name: "",
         phoneNumber: "",
-        email: ""
-      }
+        role: ""
+      },
+      rolelist: [
+        {
+          name: "角色一"
+        },
+        {
+          name: "角色二"
+        },
+        {
+          name: "角色三"
+        },
+        {
+          name: "角色四"
+        },
+        {
+          name: "角色五"
+        }
+      ]
     };
   },
   methods: {

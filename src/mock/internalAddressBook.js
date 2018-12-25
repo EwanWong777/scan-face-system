@@ -5,7 +5,7 @@ for (let i = 0; i < 10; i++) {
     internalAddressBook.push(Mock.mock({
         account: /\d{10}/,
         name: '@cname',
-        phoneNumber: /^1[34578]\d{9}$/,
+        phoneNumber: /^1[34578]\d{2}\*\*\*\*\d{4}$/,
         position: Mock.Random.pick([
             "经理",
             "员工",

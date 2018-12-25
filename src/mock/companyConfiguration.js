@@ -3,6 +3,7 @@ import Mock from 'mockjs'
 let companyConfiguration = []
 for (let i = 0; i < 10; i++) {
     companyConfiguration.push(Mock.mock({
+        name: '@cword(3, 5)' + '公司',
         ip: /\d{10}/,
         type: /[0-9]/,
         state: Mock.Random.pick([

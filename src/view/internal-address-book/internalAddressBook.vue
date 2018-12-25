@@ -1,5 +1,45 @@
 <template>
   <div class="m-internal-address-book">
+    <div class="m-group">
+      <div
+        class="m-group-list"
+        v-for="(item,index) in groupList"
+        :key="index"
+        :class="{'active':index==activeGroup}"
+        @click="handleChangeGroup(index)"
+      >
+        <div class="m-group-item">
+          <div class="m-group-item-left">
+            {{item.name}}
+          </div>
+          <div
+            class="m-group-item-right"
+            v-if="item.cantOperation"
+          >
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              size="mini"
+              circle
+              @click="handleEditGroup(item.name)"
+            ></el-button>
+            <el-button
+              type="danger"
+              icon="el-icon-delete"
+              size="mini"
+              circle
+              @click="handleDeleteGroup(index)"
+            ></el-button>
+          </div>
+        </div>
+      </div>
+      <div class="m-group-add">
+        <el-button
+          type="primary"
+          @click="handleAddGroup"
+        >添加部门</el-button>
+      </div>
+    </div>
     <div class="m-table">
       <div class="m-table-header">
         <div class="m-table-header-left">
@@ -16,7 +56,6 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
           <el-button
             type="primary"
             @click="handleAdd"
@@ -25,6 +64,10 @@
             type="primary"
             @click="handleLead"
           >导入成员</el-button>
+          <el-button
+            type="primary"
+            @click="handleRemoveGroup"
+          >移动部门</el-button>
           <el-button type="primary">模板下载</el-button>
           <el-button type="danger">删除</el-button>
         </div>
@@ -55,11 +98,6 @@
             <el-table-column
               prop="position"
               label="职位"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="department"
-              label="所属部门"
             >
             </el-table-column>
             <el-table-column
@@ -96,6 +134,98 @@
         </el-pagination>
       </div>
     </div>
+    <!-- 添加部门 -->
+    <el-dialog
+      title="添加部门"
+      :visible.sync="dialogAddGroup"
+      :append-to-body="true"
+    >
+      <el-form
+        :model="addGroupForm"
+        label-width='100px'
+      >
+        <el-form-item label="部门名称">
+          <el-input
+            v-model="addGroupForm.name"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogAddGroup = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="dialogAddGroup = false"
+        >确 定</el-button>
+      </div>
+    </el-dialog>
+    <!-- 修改部门 -->
+    <el-dialog
+      title="修改部门"
+      :visible.sync="dialogEditGroup"
+      :append-to-body="true"
+    >
+      <el-form
+        :model="editGroupForm"
+        label-width='100px'
+      >
+        <el-form-item label="部门名称">
+          <el-input
+            v-model="editGroupForm.name"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogEditGroup = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="dialogEditGroup = false"
+        >确 定</el-button>
+      </div>
+    </el-dialog>
+    <!-- 移动部门 -->
+    <el-dialog
+      title="移动部门"
+      :visible.sync="dialogRemoveGroup"
+      :append-to-body="true"
+    >
+      <el-form
+        :model="removeGroupForm"
+        label-width='100px'
+      >
+        <el-form-item label="目标部门">
+          <el-select
+            class="m-el-select"
+            v-model="removeGroupForm.name"
+            placeholder="请选择目标部门"
+          >
+            <el-option
+              v-for="(item,index) in groupList"
+              :key="index"
+              :label="item.name"
+              :value="index"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div
+        slot="footer"
+        class="dialog-footer"
+      >
+        <el-button @click="dialogRemoveGroup = false">取 消</el-button>
+        <el-button
+          type="primary"
+          @click="dialogRemoveGroup = false"
+        >确 定</el-button>
+      </div>
+    </el-dialog>
     <!-- 添加成员 -->
     <el-dialog
       title="添加成员"
@@ -129,20 +259,6 @@
             v-model="addForm.position"
             autocomplete="off"
           ></el-input>
-        </el-form-item>
-        <el-form-item label="所属部门">
-          <el-select
-            class="m-el-select"
-            v-model="addForm.department"
-            placeholder="请选择目标分组"
-          >
-            <el-option
-              v-for="(item,index) in departmentList"
-              :key="index"
-              :label="item.name"
-              :value="index"
-            ></el-option>
-          </el-select>
         </el-form-item>
       </el-form>
       <div
@@ -252,20 +368,6 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
-        <el-form-item label="所属部门">
-          <el-select
-            class="m-el-select"
-            v-model="editForm.department"
-            placeholder="请选择目标分组"
-          >
-            <el-option
-              v-for="(item,index) in departmentList"
-              :key="index"
-              :label="item.name"
-              :value="index"
-            ></el-option>
-          </el-select>
-        </el-form-item>
       </el-form>
       <div
         slot="footer"
@@ -288,9 +390,41 @@ export default {
   },
   data() {
     return {
+      activeGroup: 0,
+      groupList: [
+        {
+          name: "未分部门",
+          cantOperation: false
+        },
+        {
+          name: "部门一",
+          cantOperation: true
+        },
+        {
+          name: "部门二",
+          cantOperation: true
+        },
+        {
+          name: "部门三",
+          cantOperation: true
+        }
+      ],
       mTableSearch: {
         key: "",
         sex: ""
+      },
+      equipmentData: null,
+      dialogAddGroup: false,
+      addGroupForm: {
+        name: ""
+      },
+      dialogEditGroup: false,
+      editGroupForm: {
+        name: ""
+      },
+      dialogRemoveGroup: false,
+      removeGroupForm: {
+        name: ""
       },
       internalAddressBook: null,
       dialogAdd: false,
@@ -339,6 +473,22 @@ export default {
           console.log(err);
         });
     },
+    handleAddGroup() {
+      this.dialogAddGroup = true;
+    },
+    handleEditGroup(name) {
+      this.dialogEditGroup = true;
+      this.editGroupForm.name = name;
+    },
+    handleDeleteGroup(index) {
+      this.groupList.splice(index, 1);
+    },
+    handleRemoveGroup() {
+      this.dialogRemoveGroup = true;
+    },
+    handleChangeGroup(index) {
+      this.activeGroup = index;
+    },
     handleAdd() {
       this.dialogAdd = true;
     },
@@ -359,9 +509,40 @@ export default {
 @import '../../style/variables.styl'
 .m-internal-address-book
   padding 20px
+  display flex
+// 部门
+.m-group
+  width 256px
+  background-color $white0
+  margin-right 20px
+  .active
+    background-color $base1
+    color $base5
+.m-group-list
+  cursor pointer
+.m-group-item
+  padding 10px 20px
+  display flex
+  &:hover
+    background-color $base1
+    color $base5
+.m-group-item
+  &:hover .m-group-item-right
+    display block
+.m-group-item-left
+  flex 1
+  line-height 28px
+.m-group-item-right
+  display none
+.m-group-add
+  padding 20px
+  .el-button
+    width 100%
+// 表格
 .m-table
   background-color $white0
   padding 20px
+  flex 1
 .m-table-header
   display flex
   margin-bottom 20px

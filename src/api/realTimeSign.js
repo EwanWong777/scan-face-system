@@ -1,8 +1,15 @@
 import request from '@/util/request'
 
-export function getRankingList() {
+export function getDynamicList() {
     return request({
-        url: '/visitorStatistics/getRankingList',
+        url: '/realTimeSign/getDynamicList',
+        method: 'post'
+    })
+}
+
+export function getSignList() {
+    return request({
+        url: '/realTimeSign/getSignList',
         method: 'post'
     })
 }

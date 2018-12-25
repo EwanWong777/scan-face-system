@@ -16,7 +16,6 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
         </div>
       </div>
       <div class="m-table-body">
@@ -28,18 +27,8 @@
             >
             </el-table-column>
             <el-table-column
-              prop="ip"
-              label="服务器ip"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="type"
-              label="服务器类型"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="state"
-              label="服务器状态"
+              prop="name"
+              label="公司名称"
             >
             </el-table-column>
             <el-table-column

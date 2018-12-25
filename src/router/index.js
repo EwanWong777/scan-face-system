@@ -13,7 +13,6 @@ import InternalAddressBook from '@/view/internal-address-book/internalAddressBoo
 import VisitorStatistics from '@/view/visitor-statistics/visitorStatistics'
 import VisitorRecord from '@/view/visitor-record/visitorRecord'
 import VisitorList from '@/view/visitor-list/visitorList'
-import VisitorCard from '@/view/visitor-card/visitorCard'
 import RealTimeSign from '@/view/real-time-sign/realTimeSign'
 import SignStatistics from '@/view/sign-statistics/signStatistics'
 import AttendanceRecord from '@/view/attendance-record/attendanceRecord'
@@ -55,9 +54,6 @@ const routes = [{
     }, {
         path: '/visitorList',
         component: VisitorList,
-    }, {
-        path: '/visitorCard',
-        component: VisitorCard,
     }, {
         path: '/realTimeSign',
         component: RealTimeSign,

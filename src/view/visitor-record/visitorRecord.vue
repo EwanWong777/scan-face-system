@@ -16,8 +16,7 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
-          <el-button type="danger">删除</el-button>
+          <el-button type="primary">添加到访客名单</el-button>
         </div>
       </div>
       <div class="m-table-body">
@@ -45,7 +44,7 @@
             </el-table-column>
             <el-table-column
               label="操作"
-              width="180"
+              width="120"
             >
               <template slot-scope="scope">
                 <el-button
@@ -53,11 +52,6 @@
                   size="mini"
                   @click="handleViewPhotos"
                 >查看照片</el-button>
-                <el-button
-                  type="primary"
-                  size="mini"
-                  @click="handleEdit(scope.row)"
-                >编辑</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -96,40 +90,6 @@
         >确 定</el-button>
       </div>
     </el-dialog>
-    <!-- 编辑 -->
-    <el-dialog
-      title="编辑"
-      :visible.sync="dialogEdit"
-      :append-to-body="true"
-    >
-      <el-form
-        :model="editForm"
-        label-width='100px'
-      >
-        <el-form-item label="访客名单">
-          <el-input
-            v-model="editForm.name"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="来访对象">
-          <el-input
-            v-model="editForm.object"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-      </el-form>
-      <div
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button @click="dialogEdit = false">取 消</el-button>
-        <el-button
-          type="primary"
-          @click="dialogEdit = false"
-        >确 定</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 <script>
@@ -145,12 +105,7 @@ export default {
         sex: ""
       },
       visitorRecord: null,
-      dialogViewPhotos: false,
-      dialogEdit: false,
-      editForm: {
-        name: "",
-        object: "",
-      }
+      dialogViewPhotos: false
     };
   },
   methods: {
@@ -165,10 +120,6 @@ export default {
     },
     handleViewPhotos() {
       this.dialogViewPhotos = true;
-    },
-    handleEdit(row) {
-      this.dialogEdit = true;
-      this.editForm = Object.assign({}, row);
     }
   }
 };

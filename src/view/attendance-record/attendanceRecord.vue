@@ -46,7 +46,6 @@
           </el-form>
         </div>
         <div class="m-table-header-right">
-          <el-button><i class="fas fa-redo-alt"></i> 刷新</el-button>
           <el-button type="primary">一键导出</el-button>
           <el-button type="danger">删除</el-button>
         </div>
