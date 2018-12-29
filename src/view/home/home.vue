@@ -38,11 +38,11 @@
         <el-col :span="6">
           <div class="m-card-panel">
             <div class="m-card-panel-icon">
-              <i class="fas fa-calendar-alt"></i>
+              <i class="fas fa-robot"></i>
             </div>
             <div class="m-card-panel-text">
-              <h4>{{$t('home.date')}}</h4>
-              <h1>{{date}}</h1>
+              <h4>{{$t('home.equipment')}}</h4>
+              <h1>546434</h1>
             </div>
           </div>
         </el-col>
@@ -102,13 +102,11 @@
 export default {
   data() {
     return {
-      date: "",
       value1: "",
       value2: ""
     };
   },
   mounted() {
-    this.date = this.initDate(new Date());
     this.initLineChart();
     this.initPieChart();
     this.value1 = new Date();

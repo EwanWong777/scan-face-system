@@ -20,6 +20,7 @@ Mock.mock('/login/logout', login.logout)
 Mock.mock('/layout/getCompanyList', layout.getCompanyList)
 
 Mock.mock('/userManagement/getUserList', userManagement.getUserList)
+Mock.mock('/userManagement/getCompanyList', userManagement.getCompanyList)
 
 Mock.mock('/equipmentData/getEquipmentData', equipmentData.getEquipmentData)
 

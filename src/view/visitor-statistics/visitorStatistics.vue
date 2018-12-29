@@ -28,19 +28,19 @@
             <el-row :gutter="20">
               <el-col :span="8">
                 <div class="m-statistics-number">
-                  <h4>来访量（次）</h4>
+                  <h4>访问量（次）</h4>
                   <h1>23574</h1>
                 </div>
               </el-col>
               <el-col :span="8">
                 <div class="m-statistics-number">
-                  <h4>访问数（个）</h4>
+                  <h4>识别次数（次）</h4>
                   <h1>84948</h1>
                 </div>
               </el-col>
               <el-col :span="8">
                 <div class="m-statistics-number">
-                  <h4>接待完成（次）</h4>
+                  <h4>新增访客（人）</h4>
                   <h1>4574</h1>
                 </div>
               </el-col>
@@ -115,7 +115,7 @@
           <div class="m-chart-header">
             <div class="m-chart-header-left">
               <div class="m-chart-title">
-                新访客访问量
+                用户访问量
               </div>
             </div>
             <div class="m-chart-header-right">
@@ -247,14 +247,7 @@ export default {
             "21",
             "22",
             "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"
+            "24"
           ]
         },
         yAxis: {},
@@ -321,7 +314,7 @@ export default {
         legend: {
           orient: "vertical",
           left: "left",
-          data: ["新访客", "老访客"]
+          data: ["熟人", "陌生人"]
         },
         series: [
           {
@@ -330,8 +323,8 @@ export default {
             radius: "55%",
             center: ["50%", "60%"],
             data: [
-              { value: 335, name: "新访客" },
-              { value: 610, name: "老访客" }
+              { value: 335, name: "熟人" },
+              { value: 610, name: "陌生人" }
             ],
             itemStyle: {
               emphasis: {

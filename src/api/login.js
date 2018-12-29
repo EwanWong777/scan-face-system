@@ -2,7 +2,7 @@ import request from '@/util/request'
 import md5 from 'js-md5'
 
 export function loginByUserName(username, password) {
-    let timestamp = Math.round(new Date().getTime()/1000).toString()
+    let timestamp = Math.round(new Date().getTime() / 1000).toString()
     let md5Password = md5(password)
     let md5Sign = md5(timestamp + 'www.qihancloud.com')
     return request({

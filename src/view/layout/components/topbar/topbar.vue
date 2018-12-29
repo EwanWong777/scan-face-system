@@ -20,11 +20,20 @@
         </div>
         <div class="m-view-panel-box">
           <div class="m-view-panel">
+            <div class="m-company-search">
+              <el-input
+                v-model="companysearch"
+                size="mini"
+                placeholder="搜索公司"
+              ></el-input>
+            </div>
             <ul class="m-view-list">
-              <li
-                v-for="(item,index) in companylist"
-                :key="index"
-              >{{item.name}}</li>
+              <vue-scroll>
+                <li
+                  v-for="(item,index) in companylist"
+                  :key="index"
+                >{{item.name}}</li>
+              </vue-scroll>
             </ul>
           </div>
         </div>
@@ -89,6 +98,7 @@ export default {
   },
   data() {
     return {
+      companysearch: null,
       companylist: null
     };
   },
@@ -172,7 +182,11 @@ export default {
   transition all 0.2s
   overflow hidden
   box-shadow 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+.m-company-search
+  padding 10px
 .m-view-list
+  height 300px
+  overflow auto
   li
     line-height 48px
     padding 0 20px

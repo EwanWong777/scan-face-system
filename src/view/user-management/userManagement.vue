@@ -37,6 +37,11 @@
             >
             </el-table-column>
             <el-table-column
+              prop="company"
+              label="公司名称"
+            >
+            </el-table-column>
+            <el-table-column
               prop="phoneNumber"
               label="手机号码"
             >
@@ -90,6 +95,20 @@
             autocomplete="off"
           ></el-input>
         </el-form-item>
+        <el-form-item label="公司">
+          <el-select
+            class="m-el-select"
+            v-model="addForm.company"
+            placeholder="请选择公司"
+          >
+            <el-option
+              v-for="(item,index) in companylist"
+              :key="index"
+              :label="item.name"
+              :value="index"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="角色">
           <el-select
             class="m-el-select"
@@ -125,6 +144,20 @@
         :model="editForm"
         label-width='100px'
       >
+        <el-form-item label="公司">
+          <el-select
+            class="m-el-select"
+            v-model="editForm.company"
+            placeholder="请选择公司"
+          >
+            <el-option
+              v-for="(item,index) in companylist"
+              :key="index"
+              :label="item.name"
+              :value="index"
+            ></el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="角色">
           <el-select
             class="m-el-select"
@@ -153,10 +186,11 @@
   </div>
 </template>
 <script>
-import { getUserList } from "@/api/userManagement";
+import { getUserList, getCompanyList } from "@/api/userManagement";
 export default {
   created() {
     this.getUserList();
+    this.getCompanyList();
   },
   data() {
     return {
@@ -168,13 +202,15 @@ export default {
       dialogAdd: false,
       addForm: {
         account: "",
+        company: "",
         role: ""
       },
       dialogEdit: false,
       editForm: {
-        phoneNumber: "",
+        company: "",
         role: ""
       },
+      companylist: null,
       rolelist: [
         {
           name: "角色一"
@@ -199,6 +235,15 @@ export default {
       getUserList()
         .then(res => {
           this.userlist = res.data.userlist;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getCompanyList() {
+      getCompanyList()
+        .then(res => {
+          this.companylist = res.data.companylist;
         })
         .catch(err => {
           console.log(err);

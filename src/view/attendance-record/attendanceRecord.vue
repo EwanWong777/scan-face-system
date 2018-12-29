@@ -47,17 +47,11 @@
         </div>
         <div class="m-table-header-right">
           <el-button type="primary">一键导出</el-button>
-          <el-button type="danger">删除</el-button>
         </div>
       </div>
       <div class="m-table-body">
         <template>
           <el-table :data="recordlist">
-            <el-table-column
-              type="selection"
-              width="50"
-            >
-            </el-table-column>
             <el-table-column
               prop="staffName"
               label="员工姓名"

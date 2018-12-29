@@ -6,3 +6,10 @@ export function getUserList() {
         method: 'post'
     })
 }
+
+export function getCompanyList() {
+    return request({
+        url: '/userManagement/getCompanyList',
+        method: 'post'
+    })
+}

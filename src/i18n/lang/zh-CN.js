@@ -43,7 +43,7 @@ export default {
         user: '用户',
         message: '消息',
         earnings: '收益',
-        date: '日期',
+        equipment: '设备',
         lineChart: '线图',
         pieChart: '饼图',
         barChart: '柱状图',

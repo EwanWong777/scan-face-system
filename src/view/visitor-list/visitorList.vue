@@ -29,12 +29,7 @@
             </el-table-column>
             <el-table-column
               prop="name"
-              label="访客名单"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="object"
-              label="来访对象"
+              label="访客名称"
             >
             </el-table-column>
             <el-table-column
@@ -108,12 +103,6 @@
         <el-form-item label="访客名单">
           <el-input
             v-model="editForm.name"
-            autocomplete="off"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="来访对象">
-          <el-input
-            v-model="editForm.object"
             autocomplete="off"
           ></el-input>
         </el-form-item>

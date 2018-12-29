@@ -43,7 +43,7 @@ export default {
         user: 'USER',
         message: 'MESSAGE',
         earnings: 'EARNINGS',
-        date: 'DATE',
+        equipment: 'EQUIPMENT',
         lineChart: 'Line Chart',
         pieChart: 'Pie Chart',
         barChart: 'Bar Chart',

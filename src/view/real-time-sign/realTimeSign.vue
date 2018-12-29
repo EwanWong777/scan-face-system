@@ -4,14 +4,14 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <div class="m-card-panel">
-            <h4>星期一</h4>
-            <h1>2018/12/10</h1>
+            <h4>{{formatWeek}}</h4>
+            <h1>{{formatDate}}</h1>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="m-card-panel">
             <h4>当前:上班时间</h4>
-            <h1>2018/12/10</h1>
+            <h1>{{formatTime}}</h1>
           </div>
         </el-col>
         <el-col :span="6">
@@ -130,6 +130,7 @@ export default {
   },
   data() {
     return {
+      date: new Date(),
       mTableSearch: {
         key: "",
         sex: ""
@@ -137,6 +138,52 @@ export default {
       dynamicList: null,
       signList: null
     };
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      this.date = new Date();
+    }, 1000);
+  },
+  beforeDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  },
+  computed: {
+    formatDate: function() {
+      let date = new Date(this.date);
+      return (
+        date.getFullYear() +
+        "-" +
+        this.padDate(date.getMonth() + 1) +
+        "-" +
+        this.padDate(date.getDate())
+      );
+    },
+    formatWeek: function() {
+      let date = new Date(this.date);
+      let week = date.getDay();
+      var weekday = [
+        "星期日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六"
+      ];
+      return weekday[week];
+    },
+    formatTime: function() {
+      let date = new Date(this.date);
+      return (
+        this.padDate(date.getHours()) +
+        ":" +
+        this.padDate(date.getMinutes()) +
+        ":" +
+        this.padDate(date.getSeconds())
+      );
+    }
   },
   methods: {
     getDynamicList() {
@@ -156,6 +203,9 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    padDate(val) {
+      return val < 10 ? "0" + val : val;
     }
   }
 };

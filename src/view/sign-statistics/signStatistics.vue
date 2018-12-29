@@ -45,7 +45,7 @@
                 </el-col>
                 <el-col :span="8">
                   <div class="m-yesterday-chart-text">
-                    <h4>手动打卡</h4>
+                    <h4>旷工</h4>
                     <h1>4</h1>
                   </div>
                 </el-col>
@@ -61,12 +61,6 @@
                   <div class="m-yesterday-chart-text">
                     <h4>下班未打卡</h4>
                     <h1>0</h1>
-                  </div>
-                </el-col>
-                <el-col :span="8">
-                  <div class="m-yesterday-chart-text">
-                    <h4>旷工</h4>
-                    <h1>4</h1>
                   </div>
                 </el-col>
               </el-row>
@@ -110,7 +104,7 @@
                     </el-col>
                     <el-col :span="8">
                       <div class="m-week-chart-text">
-                        <h4>手动打卡</h4>
+                        <h4>旷工</h4>
                         <h1>4</h1>
                       </div>
                     </el-col>
@@ -126,12 +120,6 @@
                       <div class="m-week-chart-text">
                         <h4>下班未打卡</h4>
                         <h1>0</h1>
-                      </div>
-                    </el-col>
-                    <el-col :span="8">
-                      <div class="m-week-chart-text">
-                        <h4>旷工</h4>
-                        <h1>4</h1>
                       </div>
                     </el-col>
                   </el-row>
