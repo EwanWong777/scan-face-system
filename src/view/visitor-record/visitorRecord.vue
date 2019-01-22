@@ -38,11 +38,6 @@
             >
             </el-table-column>
             <el-table-column
-              prop="photo"
-              label="访客照片"
-            >
-            </el-table-column>
-            <el-table-column
               label="操作"
               width="120"
             >
@@ -50,7 +45,7 @@
                 <el-button
                   type="primary"
                   size="mini"
-                  @click="handleViewPhotos"
+                  @click="handleViewPhotos(scope)"
                 >查看照片</el-button>
               </template>
             </el-table-column>
@@ -74,10 +69,6 @@
     >
       <div class="m-member-photos">
         <img src="@/assets/demo1.jpg">
-        <img src="@/assets/demo2.jpg">
-        <img src="@/assets/demo3.jpg">
-        <img src="@/assets/demo4.jpg">
-        <img src="@/assets/demo5.jpg">
       </div>
       <div
         slot="footer"

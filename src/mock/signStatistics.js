@@ -13,7 +13,6 @@ let workinglist = []
 for (let i = 0; i < 10; i++) {
     workinglist.push(Mock.mock({
         name: '@cname',
-        count: /\d{5}/,
         time: /\d{1,3}/,
     }))
 }

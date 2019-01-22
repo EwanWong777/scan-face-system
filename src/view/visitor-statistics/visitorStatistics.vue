@@ -1,5 +1,24 @@
 <template>
   <div class="m-visitor-statistics">
+    <div class="m-search-bar">
+      <el-form :inline="true">
+        <el-form-item>
+          <el-date-picker
+            v-model="value1"
+            type="daterange"
+            :picker-options="pickerOptions1"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            align="right"
+          >
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="default">查询</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
     <el-row :gutter="20">
       <el-col :span="12">
         <div class="m-chart">
@@ -10,35 +29,18 @@
               </div>
             </div>
             <div class="m-chart-header-right">
-              <div class="m-chart-form">
-                <el-date-picker
-                  v-model="value1"
-                  type="datetimerange"
-                  :picker-options="pickerOptions"
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                  align="right"
-                >
-                </el-date-picker>
-              </div>
+
             </div>
           </div>
           <div class="m-chart-body">
             <el-row :gutter="20">
-              <el-col :span="8">
+              <el-col :span="12">
                 <div class="m-statistics-number">
                   <h4>访问量（次）</h4>
                   <h1>23574</h1>
                 </div>
               </el-col>
-              <el-col :span="8">
-                <div class="m-statistics-number">
-                  <h4>识别次数（次）</h4>
-                  <h1>84948</h1>
-                </div>
-              </el-col>
-              <el-col :span="8">
+              <el-col :span="12">
                 <div class="m-statistics-number">
                   <h4>新增访客（人）</h4>
                   <h1>4574</h1>
@@ -55,13 +57,7 @@
               </div>
             </div>
             <div class="m-chart-header-right">
-              <div class="m-chart-form">
-                <el-date-picker
-                  v-model="value4"
-                  type="date"
-                  placeholder="选择日期"
-                ></el-date-picker>
-              </div>
+
             </div>
           </div>
           <div class="m-chart-body">
@@ -95,13 +91,7 @@
               </div>
             </div>
             <div class="m-chart-header-right">
-              <div class="m-chart-form">
-                <el-date-picker
-                  v-model="value2"
-                  type="date"
-                  placeholder="选择日期"
-                ></el-date-picker>
-              </div>
+
             </div>
           </div>
           <div class="m-chart-body">
@@ -119,13 +109,7 @@
               </div>
             </div>
             <div class="m-chart-header-right">
-              <div class="m-chart-form">
-                <el-date-picker
-                  v-model="value3"
-                  type="date"
-                  placeholder="选择日期"
-                ></el-date-picker>
-              </div>
+
             </div>
           </div>
           <div class="m-chart-body">
@@ -150,10 +134,7 @@ export default {
       rankingList: null,
       date: "",
       value1: "",
-      value2: "",
-      value3: "",
-      value4: "",
-      pickerOptions: {
+      pickerOptions1: {
         shortcuts: [
           {
             text: "最近一周",
@@ -354,6 +335,16 @@ export default {
 @import '../../style/variables.styl'
 .m-visitor-statistics
   padding 20px
+.m-search-bar
+  padding 20px
+  background-color $white0
+  margin-bottom 20px
+  display flex
+  justify-content center
+  line-height 40px
+  .el-form
+    .el-form-item
+      margin-bottom 0
 .m-chart
   background-color $white0
   padding 20px

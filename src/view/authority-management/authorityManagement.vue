@@ -135,10 +135,6 @@ export default {
       activeRole: 0,
       roleList: [
         {
-          name: "普通用户",
-          cantOperation: false
-        },
-        {
           name: "角色一",
           cantOperation: true
         },

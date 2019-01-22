@@ -68,6 +68,11 @@
         <template>
           <el-table :data="equipmentData">
             <el-table-column
+              type="selection"
+              width="50"
+            >
+            </el-table-column>
+            <el-table-column
               prop="eid"
               label="设备ID"
             >

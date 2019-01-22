@@ -215,11 +215,6 @@
                 >
                 </el-table-column>
                 <el-table-column
-                  prop="count"
-                  label="次数"
-                >
-                </el-table-column>
-                <el-table-column
                   prop="time"
                   label="累计时长"
                 >

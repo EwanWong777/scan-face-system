@@ -96,18 +96,14 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="公司">
-          <el-select
-            class="m-el-select"
-            v-model="addForm.company"
-            placeholder="请选择公司"
-          >
-            <el-option
-              v-for="(item,index) in companylist"
-              :key="index"
-              :label="item.name"
-              :value="index"
-            ></el-option>
-          </el-select>
+          <div class="m-search-form-group">
+            <div class="m-search-form-group-left">
+              <el-input v-model="addForm.company"></el-input>
+            </div>
+            <div class="m-search-form-group-right">
+              <el-button type="default">查询</el-button>
+            </div>
+          </div>
         </el-form-item>
         <el-form-item label="角色">
           <el-select
@@ -145,18 +141,14 @@
         label-width='100px'
       >
         <el-form-item label="公司">
-          <el-select
-            class="m-el-select"
-            v-model="editForm.company"
-            placeholder="请选择公司"
-          >
-            <el-option
-              v-for="(item,index) in companylist"
-              :key="index"
-              :label="item.name"
-              :value="index"
-            ></el-option>
-          </el-select>
+          <div class="m-search-form-group">
+            <div class="m-search-form-group-left">
+              <el-input v-model="editForm.company"></el-input>
+            </div>
+            <div class="m-search-form-group-right">
+              <el-button type="default">查询</el-button>
+            </div>
+          </div>
         </el-form-item>
         <el-form-item label="角色">
           <el-select
@@ -281,4 +273,9 @@ export default {
 .m-table-footer
   display flex
   justify-content flex-end
+.m-search-form-group
+  display flex
+.m-search-form-group-left
+  flex 1
+  margin-right 10px
 </style>

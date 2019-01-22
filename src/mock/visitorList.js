@@ -4,7 +4,7 @@ let visitorList = []
 for (let i = 0; i < 10; i++) {
     visitorList.push(Mock.mock({
         name: '@cname',
-        object: '@cname',
+        phoneNumber: /^1[34578]\d{9}$/,
         photo: /[0-9]/,
     }))
 }

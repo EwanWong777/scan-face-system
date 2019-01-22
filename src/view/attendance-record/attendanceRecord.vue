@@ -90,7 +90,7 @@
                 <el-button
                   type="primary"
                   size="mini"
-                  @click="handleViewPhotos"
+                  @click="handleViewPhotos(scope)"
                 >查看照片</el-button>
               </template>
             </el-table-column>
@@ -190,6 +190,9 @@ export default {
   display flex
   justify-content center
   line-height 40px
+  .el-form
+    .el-form-item
+      margin-bottom 0
 .m-table
   background-color $white0
   padding 20px

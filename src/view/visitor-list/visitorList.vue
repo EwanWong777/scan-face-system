@@ -33,6 +33,11 @@
             >
             </el-table-column>
             <el-table-column
+              prop="phoneNumber"
+              label="手机号"
+            >
+            </el-table-column>
+            <el-table-column
               prop="photo"
               label="访客照片"
             >
@@ -73,12 +78,45 @@
       :append-to-body="true"
     >
       <div class="m-member-photos">
-        <img src="@/assets/demo1.jpg">
-        <img src="@/assets/demo2.jpg">
-        <img src="@/assets/demo3.jpg">
-        <img src="@/assets/demo4.jpg">
-        <img src="@/assets/demo5.jpg">
+        <div
+          class="m-photo-box"
+          v-for="(item,index) in memberPhotos"
+          :key="index"
+        >
+          <div class="m-photo-img">
+            <img
+              :src="item.url"
+              :alt="item.alt"
+            >
+          </div>
+          <div class="m-photo-btn">
+            <i
+              class="fas fa-trash-alt"
+              @click="handleDelatePhoto(index)"
+            ></i>
+          </div>
+        </div>
       </div>
+      <el-upload
+        class="upload-demo"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :before-remove="beforeRemove"
+        multiple
+        :limit="3"
+        :on-exceed="handleExceed"
+        :file-list="fileList"
+      >
+        <el-button
+          size="small"
+          type="primary"
+        >点击上传</el-button>
+        <div
+          slot="tip"
+          class="el-upload__tip"
+        >只能上传jpg/png文件，且不超过500kb</div>
+      </el-upload>
       <div
         slot="footer"
         class="dialog-footer"
@@ -103,6 +141,12 @@
         <el-form-item label="访客名单">
           <el-input
             v-model="editForm.name"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input
+            v-model="editForm.phoneNumber"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -137,8 +181,13 @@ export default {
       dialogEdit: false,
       editForm: {
         name: "",
-        object: "",
-      }
+        object: ""
+      },
+      fileList: [],
+      memberPhotos: [
+        { url: require("../../assets/demo1.jpg"), alt: "" },
+        { url: require("../../assets/demo2.jpg"), alt: "" }
+      ]
     };
   },
   methods: {
@@ -157,6 +206,25 @@ export default {
     handleEdit(row) {
       this.dialogEdit = true;
       this.editForm = Object.assign({}, row);
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(
+        `当前限制选择 3 个文件，本次选择了 ${
+          files.length
+        } 个文件，共选择了 ${files.length + fileList.length} 个文件`
+      );
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
+    },
+    handleDelatePhoto(index) {
+      this.memberPhotos.splice(index, 1);
     }
   }
 };
@@ -183,8 +251,20 @@ export default {
 .m-table-footer
   display flex
   justify-content flex-end
-.m-member-photos
+.m-photo-box
+  position relative
+  cursor pointer
+  &:hover .m-photo-btn
+    display block
+.m-photo-img
   img
     width 100%
     margin-bottom 20px
+.m-photo-btn
+  position absolute
+  right 15px
+  top 15px
+  color $white0
+  cursor pointer
+  display none
 </style>
