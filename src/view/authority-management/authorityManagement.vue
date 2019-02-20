@@ -64,7 +64,7 @@
             v-for="(second,index) in first.children"
             :key="index"
           >
-
+          
             <el-checkbox v-model="second.check">{{second.label}}</el-checkbox>
           </div>
         </div>
